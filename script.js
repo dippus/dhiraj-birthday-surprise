@@ -620,14 +620,26 @@ const STEP_SCENES = {
 let currentStep = 1;
 let highestStepUnlocked = 1;
 
-function updateStepTracker(stepNumber) {
+try {
+  const savedCurrent = parseInt(localStorage.getItem('dhiraj_birthday_saved_step'), 10);
+  const savedHighest = parseInt(localStorage.getItem('dhiraj_birthday_highest_step'), 10);
+  if (savedCurrent >= 1 && savedCurrent <= 5) currentStep = savedCurrent;
+  if (savedHighest >= 1 && savedHighest <= 5) highestStepUnlocked = savedHighest;
+  if (highestStepUnlocked < currentStep) highestStepUnlocked = currentStep;
+} catch (e) {}
+
+function updateStepTracker(stepNumber, skipCurtain = false) {
   currentStep = stepNumber;
   if (stepNumber > highestStepUnlocked) {
     highestStepUnlocked = stepNumber;
   }
 
-  // Golden Curtain Transition
-  triggerGoldenCurtain(() => {
+  try {
+    localStorage.setItem('dhiraj_birthday_saved_step', currentStep);
+    localStorage.setItem('dhiraj_birthday_highest_step', highestStepUnlocked);
+  } catch (e) {}
+
+  const applyScene = () => {
     // Update desktop step nodes
     for (let i = 1; i <= 5; i++) {
       const node = document.getElementById(`stepNode${i}`);
@@ -654,11 +666,18 @@ function updateStepTracker(stepNumber) {
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Step 5: Prepare Golden Envelope (Letter starts after user clicks wax seal)
+    // Step 5: Prepare Golden Envelope
     if (stepNumber === 5) {
       resetGoldenEnvelope();
     }
-  });
+  };
+
+  if (skipCurtain) {
+    applyScene();
+  } else {
+    // Golden Curtain Transition
+    triggerGoldenCurtain(applyScene);
+  }
 }
 
 // Allow clicking on previously unlocked steps
@@ -2320,8 +2339,13 @@ if (partyHornBtn) {
   });
 }
 
-// Replay Button (Resets Everything Cleanly)
-document.getElementById('replayBtn').addEventListener('click', () => {
+// Replay Helper Function (Resets Everything Cleanly & clears storage)
+function resetEntireExperience() {
+  localStorage.removeItem('dhiraj_birthday_saved_step');
+  localStorage.removeItem('dhiraj_birthday_highest_step');
+  currentStep = 1;
+  highestStepUnlocked = 1;
+
   candlesBlown = false;
   cakeSliced = false;
   hackInProgress = false;
@@ -2447,7 +2471,20 @@ document.getElementById('replayBtn').addEventListener('click', () => {
   });
 
   updateStepTracker(1);
-});
+}
+
+const replayBtn = document.getElementById('replayBtn');
+if (replayBtn) {
+  replayBtn.addEventListener('click', resetEntireExperience);
+}
+
+const grandReplayBtn = document.getElementById('grandReplayBtn');
+if (grandReplayBtn) {
+  grandReplayBtn.addEventListener('click', () => {
+    try { audio.playChime(); } catch(e) {}
+    resetEntireExperience();
+  });
+}
 
 // Remove any injected 3rd-party host watermarks / badges
 (() => {
@@ -2461,3 +2498,10 @@ document.getElementById('replayBtn').addEventListener('click', () => {
   window.addEventListener('load', killBadges);
   setInterval(killBadges, 1000);
 })();
+
+// Restore saved step on initial page load (if user refreshed after Step 1)
+window.addEventListener('DOMContentLoaded', () => {
+  if (currentStep > 1) {
+    updateStepTracker(currentStep, true);
+  }
+});
