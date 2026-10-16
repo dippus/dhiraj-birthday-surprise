@@ -856,12 +856,7 @@ const goToTerminalBtn = document.getElementById('goToTerminalBtn');
 if (goToTerminalBtn) {
   goToTerminalBtn.addEventListener('click', () => {
     updateStepTracker(2);
-    // Pre-fill 7488 so mobile users have a 100% friction-free experience!
-    setTimeout(() => {
-      if (terminalInput && !terminalInput.value) {
-        terminalInput.value = "7488";
-      }
-    }, 350);
+    // User recalls and enters code discovered in Step 1 balloon pop!
   });
 }
 
@@ -916,7 +911,7 @@ function appendLog(text, className = '') {
 const terminalInput = document.getElementById('terminalInput');
 const passcodeForm = document.getElementById('passcodeForm');
 const numpadClear = document.getElementById('numpadClear');
-const numpadAutoFill = document.getElementById('numpadAutoFill');
+const numpadEnter = document.getElementById('numpadEnter');
 
 // Fast, responsive numpad key press handler
 function handleNumpadInput(val) {
@@ -966,24 +961,21 @@ if (numpadClear) {
   numpadClear.addEventListener('click', triggerClear);
 }
 
-if (numpadAutoFill) {
+if (numpadEnter) {
   let touchHandled = false;
-  const triggerAutoFill = (e) => {
+  const triggerEnter = (e) => {
     if (e.type === 'pointerdown') touchHandled = true;
     else if (e.type === 'click' && touchHandled) {
       touchHandled = false;
       return;
     }
     e.preventDefault();
-    try { audio.playChime(); } catch(e) {}
-    if (terminalInput) {
-      terminalInput.value = "7488";
-    }
-    numpadAutoFill.classList.add('flashing');
-    setTimeout(() => numpadAutoFill.classList.remove('flashing'), 220);
+    numpadEnter.classList.add('flashing');
+    setTimeout(() => numpadEnter.classList.remove('flashing'), 220);
+    submitPasscode();
   };
-  numpadAutoFill.addEventListener('pointerdown', triggerAutoFill);
-  numpadAutoFill.addEventListener('click', triggerAutoFill);
+  numpadEnter.addEventListener('pointerdown', triggerEnter);
+  numpadEnter.addEventListener('click', triggerEnter);
 }
 
 // Support physical hardware keyboard for desktop without popping mobile keyboard
@@ -1019,7 +1011,7 @@ function submitPasscode() {
   const enteredCode = (terminalInput ? terminalInput.value.trim() : '');
 
   if (!enteredCode) {
-    appendLog('> [ERROR]: PLEASE ENTER A 4-DIGIT PASSCODE (7488)!', 'error');
+    appendLog('> [ERROR]: PLEASE ENTER THE 4-DIGIT PASSCODE FOUND FROM STEP 1!', 'error');
     try { audio.playBuzzer(); } catch(e) {}
     return;
   }

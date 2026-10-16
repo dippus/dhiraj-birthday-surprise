@@ -1557,15 +1557,15 @@ body {
 .numpad-key.clear:hover {
   background: rgba(255, 62, 120, 0.25);
 }
-.numpad-key.auto-fill {
-  background: linear-gradient(135deg, rgba(255, 210, 105, 0.25), rgba(255, 62, 120, 0.2));
-  border-color: rgba(255, 210, 105, 0.6);
-  color: #fff;
-  font-size: 12px;
+.numpad-key.submit-key {
+  background: linear-gradient(135deg, rgba(255, 210, 105, 0.35), rgba(245, 158, 11, 0.4));
+  border-color: rgba(255, 210, 105, 0.7);
+  color: #ffd269;
+  font-size: 13px;
   font-weight: 900;
-  box-shadow: 0 0 15px rgba(255, 210, 105, 0.25);
+  box-shadow: 0 0 16px rgba(255, 210, 105, 0.28);
 }
-.numpad-key.auto-fill:hover {
+.numpad-key.submit-key:hover {
   background: var(--gold-gradient);
   color: #1a1202;
 }
@@ -3817,4 +3817,103 @@ iframe[src*="netlify"] {
 @media (max-width: 520px) {
   .side-decor-pillar { display: none; }
   .experience-container { padding: 55px 8px 35px; }
+
+  /* ===== STEP 2 TERMINAL MOBILE COMPACT FIT ===== */
+  #scene-terminal .scene-inner {
+    padding: 14px 10px;
+    max-width: 100%;
+  }
+
+  .countdown-wrapper {
+    margin: 8px auto 14px;
+    padding: 10px 12px;
+  }
+  .countdown-label {
+    font-size: 10px;
+    margin-bottom: 6px;
+    letter-spacing: 0.1em;
+  }
+  .countdown-boxes {
+    gap: 6px;
+  }
+  .time-unit b {
+    font-size: 20px;
+    min-width: 32px;
+  }
+  .time-unit span {
+    font-size: 8.5px;
+    letter-spacing: 0.05em;
+  }
+  .colon {
+    font-size: 18px;
+    margin: 0 1px;
+  }
+  .countdown-status {
+    font-size: 10px;
+    margin-top: 8px;
+    padding: 4px 10px;
+  }
+
+  /* Cyber Terminal Mobile Scaling */
+  .cyber-terminal {
+    border-radius: 12px;
+    border-width: 1.5px;
+  }
+  .terminal-header {
+    padding: 8px 12px;
+    font-size: 10px;
+  }
+  .terminal-title {
+    font-size: 9.5px;
+  }
+  .terminal-indicator {
+    font-size: 8.5px;
+  }
+  .terminal-body {
+    padding: 10px 12px;
+    min-height: 85px;
+    max-height: 110px;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  .terminal-input-bar {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+  .terminal-key-icon {
+    font-size: 14px;
+  }
+  .terminal-prompt {
+    font-size: 14px;
+  }
+  .term-input {
+    padding: 8px 10px;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+  }
+  .term-input::placeholder {
+    font-size: 11.5px;
+  }
+  .btn-inject {
+    padding: 8px 14px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  /* On-Screen Mobile Numpad */
+  .terminal-numpad {
+    gap: 7px;
+    padding: 10px 10px 12px;
+  }
+  .numpad-key {
+    font-size: 15px;
+    padding: 9px 0;
+    border-radius: 8px;
+  }
+  .numpad-key.clear {
+    font-size: 12px;
+  }
+  .numpad-key.submit-key {
+    font-size: 12px;
+  }
 }
