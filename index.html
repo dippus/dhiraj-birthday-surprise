@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday Dhiraj! 🎂 A Special Surprise by Dippu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel:wght@700;900&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- Golden Curtain Scene Transition Overlay -->
+  <div id="goldenCurtain" class="golden-curtain" aria-hidden="true">
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+    <div class="curtain-star">✨</div>
+  </div>
+  <!-- Ambient & Confetti Physics Canvases -->
+  <canvas id="ambientCanvas"></canvas>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Top Festive Header & Audio Controls -->
+  <header class="top-nav">
+    <div class="brand-tag">
+      <span class="sparkle-icon">✨</span>
+      <span class="brand-text">DHIRAJ'S BIRTHDAY SURPRISE · BY DIPPU</span>
+    </div>
+    <div class="audio-controls">
+      <button id="musicToggleBtn" class="audio-btn" aria-label="Toggle Birthday Music"
+        title="Play/Pause Birthday Celebration Music">
+        <span class="music-bars" id="musicBars">
+          <i></i><i></i><i></i><i></i>
+        </span>
+        <span id="musicBtnLabel">🎵 Music</span>
+      </button>
+      <button id="partyHornBtn" class="horn-btn" aria-label="Blow Party Horn" title="Blow Party Horn!">
+        🎺 Horn
+      </button>
+    </div>
+  </header>
+
+
+
+  <div id="ceilingBalloons" class="ceiling-balloons"></div>
+
+  <!-- Luxury Side Balloon Pillars & Fairy Lights (Left & Right) -->
+  <aside class="side-decor-pillar left" aria-hidden="true">
+    <div class="fairy-lights-strand">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="balloon-bunch">
+      <div class="pillar-balloon b-gold"></div>
+      <div class="pillar-balloon b-pink"></div>
+      <div class="pillar-balloon b-cyan"></div>
+      <div class="pillar-balloon b-purple"></div>
+      <div class="pillar-balloon b-gold2"></div>
+      <div class="pillar-balloon b-pink2"></div>
+      <div class="ribbon-streamers"></div>
+      <div class="balloon-anchor">🎁</div>
+    </div>
+  </aside>
+
+  <aside class="side-decor-pillar right" aria-hidden="true">
+    <div class="fairy-lights-strand">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="balloon-bunch">
+      <div class="pillar-balloon b-cyan"></div>
+      <div class="pillar-balloon b-gold"></div>
+      <div class="pillar-balloon b-purple"></div>
+      <div class="pillar-balloon b-pink"></div>
+      <div class="pillar-balloon b-cyan2"></div>
+      <div class="pillar-balloon b-gold2"></div>
+      <div class="ribbon-streamers"></div>
+      <div class="balloon-anchor">🎁</div>
+    </div>
+  </aside>
+
+  <main class="experience-container">
+    <!-- ================= SCENE 1: THE BIRTHDAY ROOM, PET & KABUTAR ================= -->
+    <section class="scene active" id="scene-messenger">
+      <div class="scene-inner room-card">
+        <!-- Festoon Garland Bunting directly crowning card -->
+        <div class="bunting-garland" id="buntingGarland">
+          <div class="bunting-flags">
+            <span class="flag f1">★</span><span class="flag f2">H</span><span class="flag f3">B</span><span
+              class="flag f4">D</span>
+            <span class="flag f5">★</span><span class="flag f6">D</span><span class="flag f7">H</span><span
+              class="flag f8">I</span><span class="flag f9">R</span><span class="flag f10">A</span><span
+              class="flag f11">J</span>
+            <span class="flag f12">★</span>
+          </div>
+        </div>
+
+        <div class="intro-step-badge">
+          <span class="intro-badge-dot"></span>
+          <span>STEP 01 · TOP SECRET INVITATION</span>
+        </div>
+        <h1 class="main-title">A Special Surprise for <span class="gold-gradient">Dhiraj ✨</span></h1>
+
+        <!-- Birthday Boy VIP Badge with Royal Portrait & 19 OCT Date Tag -->
+        <div class="birthday-boy-badge">
+          <div class="avatar-ring">
+            <img src="dhiraj_birthday.jpg" alt="Dhiraj Kumar" class="birthday-boy-img">
+            <span class="avatar-crown-badge">👑</span>
+          </div>
+          <div class="birthday-boy-info">
+            <div class="boy-role-row">
+              <span class="boy-role">✨ TODAY'S BIRTHDAY LEGEND ✨</span>
+              <span class="boy-date-badge">📅 19 OCT</span>
+            </div>
+            <span class="boy-name">Dhiraj Kumar</span>
+            <span class="boy-sub">A royal digital journey crafted exclusively for you</span>
+          </div>
+        </div>
+
+        <p class="intro-sub">Unlock each chapter to unveil the secret!</p>
+        <div class="intro-divider"></div>
+
+        <!-- Compact Pet & Sky Row -->
+        <div class="delivery-stage">
+          <!-- Cute Pet Dog in Party Cone Hat -->
+          <div class="pet-stage">
+            <div class="pet-character" id="petCharacter" title="Click for a happy wag!">
+              <div class="party-hat">
+                <div class="hat-pom"></div>
+                <div class="hat-cone"></div>
+              </div>
+              <div class="dog-head">
+                <div class="dog-ear left"></div>
+                <div class="dog-ear right"></div>
+                <div class="dog-eyes">
+                  <i class="eye left"></i>
+                  <i class="eye right"></i>
+                </div>
+                <div class="dog-snout">
+                  <div class="dog-nose"></div>
+                  <div class="dog-tongue"></div>
+                </div>
+              </div>
+              <div class="dog-body">
+                <div class="dog-collar"><span class="collar-bell">🔔</span></div>
+                <div class="dog-tail"></div>
+                <!-- Dog Holding WELCOME Signboard -->
+                <div class="dog-welcome-sign">
+                  <div class="sign-paws">
+                    <span class="paw left">🐾</span>
+                    <span class="paw right">🐾</span>
+                  </div>
+                  <div class="sign-board">
+                    <span class="sign-text-welcome">WELCOME</span>
+                    <span class="sign-text-sub">DHIRAJ ✨</span>
+                  </div>
+                  <div class="sign-stick"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4 Interactive Tap-to-Pop Mystery Balloons (Code 7488 inside) -->
+          <div class="mystery-balloons-stage" id="mysteryBalloonsStage">
+            <div class="balloon-stage-hint">🎈 Tap any balloon to pop and reveal the VIP Code!</div>
+            <div class="balloon-cluster">
+              <!-- Balloon 1 -->
+              <div class="tap-balloon b-pink" data-balloon="1" title="Tap to pop!">
+                <div class="t-balloon-body">
+                  <div class="b-shine"></div>
+                  <span class="b-question">?</span>
+                </div>
+                <div class="t-balloon-knot"></div>
+                <div class="t-balloon-string"></div>
+              </div>
+
+              <!-- Balloon 2 -->
+              <div class="tap-balloon b-gold" data-balloon="2" title="Tap to pop!">
+                <div class="t-balloon-body">
+                  <div class="b-shine"></div>
+                  <span class="b-question">?</span>
+                </div>
+                <div class="t-balloon-knot"></div>
+                <div class="t-balloon-string"></div>
+              </div>
+
+              <!-- Balloon 3 -->
+              <div class="tap-balloon b-cyan" data-balloon="3" title="Tap to pop!">
+                <div class="t-balloon-body">
+                  <div class="b-shine"></div>
+                  <span class="b-question">?</span>
+                </div>
+                <div class="t-balloon-knot"></div>
+                <div class="t-balloon-string"></div>
+              </div>
+
+              <!-- Balloon 4 -->
+              <div class="tap-balloon b-purple" data-balloon="4" title="Tap to pop!">
+                <div class="t-balloon-body">
+                  <div class="b-shine"></div>
+                  <span class="b-question">?</span>
+                </div>
+                <div class="t-balloon-knot"></div>
+                <div class="t-balloon-string"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dropped / Revealed VIP Code Card (Appears when balloon pops with 7488) -->
+        <div class="dropped-key-card" id="droppedKeyCard" style="display: none;">
+          <div class="key-card-left">
+            <div class="key-glow-icon">🗝️</div>
+            <div class="key-info">
+              <div class="key-title">VIP ACCESS CODE FOUND</div>
+              <span class="key-code" id="secretPasscode">7488</span>
+            </div>
+          </div>
+          <button id="goToTerminalBtn" class="btn-royal btn-pulse">
+            <span>Unlock Vault with 7488 🗝️ →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 2: DIGITAL TERMINAL & HACK OVERRIDE ================= -->
+    <section class="scene" id="scene-terminal">
+      <div class="scene-inner terminal-card">
+        <div class="intro-step-badge terminal-badge">
+          <span class="intro-badge-dot"></span>
+          <span>STEP 02 · VAULT ACCESS</span>
+        </div>
+        <h2 class="section-title">Unlock <span class="gold-gradient">The Vault</span> 🔒</h2>
+        <p class="intro-sub">Enter your VIP Passcode to unlock the secret!</p>
+        <div class="intro-divider"></div>
+
+        <!-- Live Countdown Timer Display (Clean & Minimal) -->
+        <div class="countdown-wrapper">
+          <div class="countdown-label">BIRTHDAY UNLOCK TIMER</div>
+          <div class="countdown-boxes">
+            <div class="time-unit"><b id="cdHours">02</b><span>HOURS</span></div>
+            <span class="colon">:</span>
+            <div class="time-unit"><b id="cdMins">45</b><span>MINS</span></div>
+            <span class="colon">:</span>
+            <div class="time-unit"><b id="cdSecs">18</b><span>SECS</span></div>
+          </div>
+          <p class="countdown-status" id="countdownStatus">STATUS: [LOCKED]
+          </p>
+        </div>
+
+        <!-- The Cyber Digital Terminal Screen (Decorated with Warm Accents) -->
+        <div class="cyber-terminal" id="cyberTerminal">
+          <div class="terminal-scanline"></div>
+          <div class="terminal-header">
+            <span class="terminal-dots"><i></i><i></i><i></i></span>
+            <span class="terminal-title">VIP VAULT CONSOLE ✨</span>
+            <span class="terminal-indicator blink" id="terminalIndicator">● STANDBY</span>
+          </div>
+
+          <div class="terminal-body" id="terminalLog">
+            <p class="log-line">> ENTER 4-DIGIT VIP PASSCODE TO UNLOCK THE VAULT...</p>
+          </div>
+
+          <!-- Active Interactive Passcode Input Bar -->
+          <form class="terminal-input-bar" id="passcodeForm" onsubmit="return false;">
+            <span class="terminal-key-icon">🗝️</span>
+            <span class="terminal-prompt">$</span>
+            <input 
+              type="text" 
+              id="terminalInput" 
+              class="term-input active-input" 
+              placeholder="Use keypad below (Code: 7488)" 
+              maxlength="4" 
+              autocomplete="off"
+              readonly
+              inputmode="none"
+              tabindex="-1"
+            >
+            <button type="submit" id="injectKeyBtn" class="btn-inject">
+              <span>Unlock 🔓</span>
+            </button>
+          </form>
+
+          <!-- Quick Interactive On-Screen Number Keypad (For Phone & Mouse clicks) -->
+          <div class="terminal-numpad" id="terminalNumpad">
+            <button type="button" class="numpad-key" data-val="1">1</button>
+            <button type="button" class="numpad-key" data-val="2">2</button>
+            <button type="button" class="numpad-key" data-val="3">3</button>
+            <button type="button" class="numpad-key" data-val="4">4</button>
+            <button type="button" class="numpad-key" data-val="5">5</button>
+            <button type="button" class="numpad-key" data-val="6">6</button>
+            <button type="button" class="numpad-key" data-val="7">7</button>
+            <button type="button" class="numpad-key" data-val="8">8</button>
+            <button type="button" class="numpad-key" data-val="9">9</button>
+            <button type="button" class="numpad-key clear" id="numpadClear">Clear ⌫</button>
+            <button type="button" class="numpad-key" data-val="0">0</button>
+            <button type="button" class="numpad-key auto-fill" id="numpadAutoFill" title="Auto-fill code found in balloon">Use 7488 ✨</button>
+          </div>
+        </div>
+
+        <!-- Proceed to Vault Button (Revealed after Hack) -->
+        <div class="terminal-action" id="terminalAction" style="display: none;">
+          <button id="openVaultBtn" class="btn-royal btn-pulse">
+            <span>Open Birthday Vault 🔓 →</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 3: REALISTIC SKY LANTERN WISH CEREMONY ================= -->
+    <section class="scene" id="scene-jar">
+      <div class="scene-inner lantern-scene-card">
+        <div class="intro-step-badge lantern-badge">
+          <span class="intro-badge-dot"></span>
+          <span>STEP 03 · SACRED BIRTHDAY WISH</span>
+        </div>
+        <h2 class="section-title">Launch A <span class="gold-gradient">Sky Lantern</span> 🪔✨</h2>
+        <p class="intro-sub">Select your sacred prayer for Dhiraj, ignite the holy flame, and release it into the starry sky!</p>
+        <div class="intro-divider"></div>
+
+        <!-- Wish Selection Chips & Custom Prayer Input -->
+        <div class="lantern-wish-selector" id="lanternWishSelector">
+          <span class="wish-select-label">Choose or write your prayer for Dhiraj:</span>
+          <div class="wish-chips-grid">
+            <button class="wish-chip active" data-wish="May Maha Dev always protect, guide and bless Dhiraj with infinite joy! 🙏✨">
+              <span>🙏 Maha Dev's Divine Protection & Joy</span>
+            </button>
+            <button class="wish-chip" data-wish="May all your biggest ambitions & dreams take flight this year! 🚀💫">
+              <span>🚀 Unstoppable Dreams & Success</span>
+            </button>
+            <button class="wish-chip" data-wish="May our brotherhood stay unbreakable till the end of time! 🤝❤️">
+              <span>🤝 Unbreakable Brotherhood Forever</span>
+            </button>
+            <button class="wish-chip" data-wish="Always keep that bright, genuine smile on your face, mere bhai! 😄👑">
+              <span>😄 Endless Health & Cheerful Laughter</span>
+            </button>
+          </div>
+          <div class="custom-wish-wrapper">
+            <input type="text" id="customWishInput" class="custom-wish-input" maxlength="85" placeholder="✍️ Or write your own prayer for Dhiraj..." />
+          </div>
+        </div>
+
+        <!-- The Sky Lantern Stage -->
+        <div class="lantern-stage-container" id="lanternStage">
+          <!-- Ambient Stars & Moon Background inside stage -->
+          <div class="lantern-sky-backdrop">
+            <div class="sky-moon"></div>
+            <div class="sky-distant-stars"></div>
+            <!-- Dynamic Floating Background Lanterns -->
+            <div class="distant-lanterns-layer" id="distantLanternsLayer"></div>
+          </div>
+
+          <!-- Main Interactive Sky Lantern -->
+          <div class="sky-lantern-wrapper" id="mainSkyLantern">
+            <!-- Top Paper Crown & Ribs -->
+            <div class="lantern-paper-body">
+              <div class="lantern-ribs"></div>
+              <div class="lantern-inner-glow"></div>
+              
+              <!-- Inscription on the Lantern Paper -->
+              <div class="lantern-inscription">
+                <span class="lantern-sacred-om">ॐ नमः शिवाय</span>
+                <p class="lantern-wish-text" id="lanternWishText">May Maha Dev always protect, guide and bless Dhiraj with infinite joy! 🙏✨</p>
+                <span class="lantern-tagline">✦ Dedicated to Dhiraj Kumar · 2026 ✦</span>
+              </div>
+
+              <!-- Lower Flame Chamber / Diya -->
+              <div class="lantern-base-ring">
+                <div class="lantern-bamboo-hoop"></div>
+                <div class="lantern-wick-holder">
+                  <div class="lantern-flame" id="lanternFlame"></div>
+                </div>
+              </div>
+              <span class="lantern-touch-hint" id="lanternTouchHint">👆 Touch Diya or Button to Light</span>
+            </div>
+            <!-- Heat Smoke / Shimmer -->
+            <div class="lantern-heat-haze" id="lanternHeatHaze"></div>
+          </div>
+
+          <!-- Interactive Ignite / Release Control Station -->
+          <div class="lantern-control-station">
+            <div class="heat-progress-container" id="heatProgressBox" style="display: none;">
+              <div class="heat-bar-label">
+                <span>🔥 Warm Air Buoyancy (Garam Hawa)</span>
+                <span id="heatPercentage">0%</span>
+              </div>
+              <div class="heat-track">
+                <div class="heat-fill" id="heatFill"></div>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="lantern-buttons-row">
+              <button id="igniteLanternBtn" class="btn-royal btn-pulse">
+                <span>🔥 Touch to Ignite the Diya</span>
+              </button>
+              <button id="releaseLanternBtn" class="btn-royal" style="display: none;">
+                <span>✨ Release Sky Lantern Into Stars 🌌</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Blessing Revelation Banner (Reveals when lantern ascends into night sky) -->
+          <div class="lantern-blessing-card pure-sky-blessing" id="lanternBlessingCard" style="display: none;">
+            <div class="blessing-sparkle">✦ ✦ ✦</div>
+            <h3 class="blessing-title">Your Prayer Has Reached The Stars! 🌌</h3>
+            <p class="blessing-desc">“A prayer from the heart echoes across the universe.”</p>
+            <button id="goToCakeBtn" class="btn-royal btn-pulse" style="display: none; margin-top: 14px;">
+              <span>Proceed to Step 4: Birthday Cake 🎂 →</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 4: INTERACTIVE CAKE CUTTING & CELEBRATION ================= -->
+    <section class="scene" id="scene-cake">
+      <div class="scene-inner cake-card">
+
+        <!-- Header & Instructions (Disappears cleanly when candles are blown out!) -->
+        <div class="cake-instruction-box" id="cakeInstructionBox">
+          <div class="intro-step-badge cake-badge">
+            <span class="intro-badge-dot"></span>
+            <span>STEP 04 · THE CAKE CUTTING CEREMONY</span>
+          </div>
+          <h2 class="section-title">Cut the Cake, <span class="gold-gradient">Dhiraj! 🎂</span></h2>
+          <div class="intro-divider"></div>
+        </div>
+
+        <!-- Interactive 3D Cake with Centered Knife & Real Split Slices Effect -->
+        <div class="cake-stage">
+          <!-- The Golden Chef Cake Knife (Centered directly above cake) -->
+          <div class="cake-knife" id="cakeKnife" title="Click knife to cut cake!">
+            <div class="knife-handle"></div>
+            <div class="knife-guard"></div>
+            <div class="knife-blade"></div>
+          </div>
+
+          <div class="cake-wrapper" id="cakeWrapper" title="Cake par tap karke candle bujhao ya cut karo!">
+            <!-- 4 Colorful Candles Row (Systematic Extinguish) -->
+            <div class="candles-row" id="candlesRow">
+              <div class="candle c-gold" id="candle1" title="Golden Star Candle">
+                <div class="flame flame-gold" id="flame1"></div>
+                <div class="wick"></div>
+                <div class="candle-body"></div>
+              </div>
+              <div class="candle c-pink" id="candle2" title="Rose Pink Candle">
+                <div class="flame flame-pink" id="flame2"></div>
+                <div class="wick"></div>
+                <div class="candle-body"></div>
+              </div>
+              <div class="candle c-cyan" id="candle3" title="Sky Cyan Candle">
+                <div class="flame flame-cyan" id="flame3"></div>
+                <div class="wick"></div>
+                <div class="candle-body"></div>
+              </div>
+              <div class="candle c-purple" id="candle4" title="Royal Purple Candle">
+                <div class="flame flame-purple" id="flame4"></div>
+                <div class="wick"></div>
+                <div class="candle-body"></div>
+              </div>
+            </div>
+
+            <!-- Cake Name Tag — sits outside the split container so it stays intact -->
+            <div class="cake-name-tag" id="cakeNameTag">✨ DHIRAJ ✨</div>
+
+            <!-- Real Split Cake Container (Divides visibly into two halves upon cut!) -->
+            <div class="cake-split-container" id="cakeSplitContainer">
+              <!-- Left Sliced Half -->
+              <div class="cake-half left-half">
+                <div class="half-top-tier">
+                  <div class="frosting-layer"></div>
+                  <span class="half-cake-text">🌸</span>
+                </div>
+                <div class="half-bottom-tier">
+                  <div class="half-cherries">🍓</div>
+                </div>
+              </div>
+
+              <!-- Exposed Delicious Chocolate & Strawberry Slice Core -->
+              <div class="cake-slice-core" id="cakeSliceCore">
+                <div class="slice-inner-filling"></div>
+                <div class="slice-glitter-sparks">✨</div>
+              </div>
+
+              <!-- Right Sliced Half -->
+              <div class="cake-half right-half">
+                <div class="half-top-tier">
+                  <div class="frosting-layer"></div>
+                  <span class="half-cake-text">💫</span>
+                </div>
+                <div class="half-bottom-tier">
+                  <div class="half-cherries">🍒</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Golden Cake Stand -->
+            <div class="cake-stand"></div>
+          </div>
+        </div>
+
+        <!-- Action Controls: First Blow Candles, then Cut Cake (Hides on cut!) -->
+        <div class="wish-status-box" id="wishStatusBox">
+          <div class="cake-buttons-group">
+            <button id="blowCandlesBtn" class="btn-blow">
+              <span>💨 1. Blow Out Candles (One by One)</span>
+            </button>
+            <button id="cutCakeBtn" class="btn-cut-cake" style="display: none;">
+              <span>🔪 2. Cut Dhiraj's Birthday Cake!</span>
+            </button>
+          </div>
+          <p class="wish-tip" id="wishTip">Tip: Candles systematically ek ke baad ek bujhengi!</p>
+        </div>
+
+        <!-- Real-Time Animated Typewriter Celebration Banner (Types out letter-by-letter on cut!) -->
+        <div class="cake-celebration-banner" id="cakeCelebrationBanner" style="display: none;">
+          <div class="banner-photo-wrapper">
+            <span class="banner-crown-emoji">👑</span>
+            <img src="dhiraj_birthday.jpg" alt="Dhiraj Kumar Birthday" class="cake-dhiraj-img">
+          </div>
+          <div class="banner-sparkles">✨ 🎈 🎉 🎂 🎉 🎈 ✨</div>
+          <div class="typewriter-hbd-wrapper">
+            <h1 class="grand-hbd-text" id="cakeHbdHeading">
+              <span id="cakeHbdTyped"></span><span class="hbd-cursor" id="cakeHbdCursor">|</span>
+            </h1>
+            <p class="grand-hbd-sub" id="cakeHbdSub"></p>
+          </div>
+        </div>
+
+        <button id="goToFinaleBtn" class="btn-royal" style="display: none; margin-top: 18px;">
+          <span>Proceed to Step 5: Final Wish by Dippu 💌 →</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= SCENE 5: THE GRAND FINALE & MESSAGE BY DIPPU ================= -->
+    <section class="scene" id="scene-finale">
+      <div class="scene-inner finale-card">
+        <!-- ================= ROYAL SCROLL ENVELOPE / SEAL EXPERIENCE ================= -->
+        <div class="envelope-stage" id="envelopeStage">
+          <div class="golden-envelope" id="goldenEnvelope" title="Click the Wax Seal to Open Letter!">
+            <!-- Envelope Flap (Top Triangle with Wax Seal) -->
+            <div class="envelope-flap" id="envelopeFlap">
+              <div class="wax-seal" id="waxSeal" title="Break the Seal!">
+                <div class="seal-inner">
+                  <span class="seal-initial">D</span>
+                  <div class="seal-sparkle">✦</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Envelope Pocket & Back -->
+            <div class="envelope-pocket"></div>
+            <div class="envelope-front-folds"></div>
+
+            <!-- Envelope Hint Pill -->
+            <div class="envelope-hint" id="envelopeHint">
+              <span class="hint-hand">👆</span> Tap the Wax Seal to Open Letter ✨
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Animated Parchment Letter (Slides Up & Unfolds from Envelope) -->
+        <article class="star-message-card" id="starMessageCard" style="display: none;">
+          <div class="quill-header">
+            <span class="quill-status" id="quillStatus">Dippu is writing a message for you...</span>
+          </div>
+
+          <div class="card-ornament top">✦ ✦ ✦</div>
+
+          <div class="typewriter-content" id="typewriterContent">
+            <!-- Dynamic typewriter elements injected here line by line -->
+          </div>
+
+          <div class="card-ornament bottom">✦ ✦ ✦</div>
+        </article>
+
+        <!-- Photo Frame Tribute Card -->
+        <div class="tribute-frame" id="tributeFrame" style="display:none;">
+          <div class="tribute-frame-inner">
+            <div class="frame-corner tl">✦</div>
+            <div class="frame-corner tr">✦</div>
+            <div class="frame-corner bl">✦</div>
+            <div class="frame-corner br">✦</div>
+            <div class="frame-content">
+              <div class="frame-photo-container">
+                <div class="frame-photo-glow"></div>
+                <img src="dhiraj_birthday.jpg" alt="Dhiraj Kumar Birthday Celebration" class="tribute-photo">
+                <span class="photo-crown-tag">👑 Birthday Legend</span>
+              </div>
+              <div class="frame-name">DHIRAJ KUMAR</div>
+              <div class="frame-tagline">The Birthday Legend · 19 OCT 2026</div>
+              <div class="frame-divider"></div>
+              <div class="frame-footer">Crafted with pure ❤️ by Dippu</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finale Buttons -->
+        <div class="finale-actions">
+          <button id="skipTypingBtn" class="btn-outline-small" style="display:none;">
+            <span>Skip Typing ⏩</span>
+          </button>
+          <button id="superConfettiBtn" class="btn-outline-small">
+            <span>🎉 Super Confetti!</span>
+          </button>
+          <button id="hornBlastBtn" class="btn-outline-small">
+            <span>🎺 Party Horn</span>
+          </button>
+          <button id="replayBtn" class="btn-outline">
+            <span>🔄 Replay From Step 1</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky Footer -->
+  <footer class="bottom-footer">
+    <span>Crafted with pure love for <strong>DHIRAJ KUMAR</strong> ❤️</span>
+    <span class="tag-by">BY DIPPU · 2026</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
