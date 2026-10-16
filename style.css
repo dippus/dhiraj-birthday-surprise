@@ -1479,17 +1479,21 @@ body {
   background: rgba(255, 255, 255, 0.08);
   border: 1.5px solid rgba(255, 210, 105, 0.4);
   border-radius: 8px;
-  padding: 8px 14px;
+  padding: 10px 14px;
   outline: none;
-  color: #fff;
+  color: #ffd269 !important;
+  -webkit-text-fill-color: #ffd269 !important;
+  opacity: 1 !important;
   font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 15px;
-  letter-spacing: 0.15em;
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.2em;
+  text-align: center;
   caret-color: transparent;
   user-select: none;
   -webkit-user-select: none;
   cursor: pointer;
+  touch-action: manipulation;
 }
 .term-input:focus {
   border-color: var(--gold-primary);
@@ -1499,56 +1503,67 @@ body {
 }
 .term-input::placeholder {
   color: rgba(255, 210, 105, 0.45);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.05em;
 }
 
 /* Interactive Number Keypad */
 .terminal-numpad {
+  position: relative;
+  z-index: 20;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 12px 16px;
-  background: rgba(8, 5, 18, 0.85);
-  border-top: 1px dashed rgba(255, 210, 105, 0.2);
+  gap: 10px;
+  padding: 14px 16px;
+  background: rgba(8, 5, 18, 0.92);
+  border-top: 1px dashed rgba(255, 210, 105, 0.25);
+  touch-action: manipulation;
 }
 .numpad-key {
-  background: rgba(255, 210, 105, 0.08);
-  border: 1px solid rgba(255, 210, 105, 0.25);
-  border-radius: 8px;
+  position: relative;
+  z-index: 21;
+  background: rgba(255, 210, 105, 0.12);
+  border: 1.5px solid rgba(255, 210, 105, 0.3);
+  border-radius: 10px;
   color: #ffd269;
   font-family: var(--font-heading);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
-  padding: 9px 0;
+  padding: 12px 0;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(255, 210, 105, 0.4);
   transition: all 0.15s ease;
   user-select: none;
+  -webkit-user-select: none;
 }
 .numpad-key:hover {
-  background: rgba(255, 210, 105, 0.22);
+  background: rgba(255, 210, 105, 0.25);
   border-color: var(--gold-primary);
   transform: translateY(-1px);
 }
-.numpad-key:active {
-  transform: scale(0.95);
-  background: var(--gold-primary);
-  color: #1a1202;
+.numpad-key:active, .numpad-key.flashing {
+  transform: scale(0.92);
+  background: var(--gold-primary) !important;
+  color: #1a1202 !important;
+  box-shadow: 0 0 20px rgba(255, 210, 105, 0.8) !important;
 }
 .numpad-key.clear {
   color: #ff3e78;
-  border-color: rgba(255, 62, 120, 0.35);
-  background: rgba(255, 62, 120, 0.08);
-  font-size: 12px;
+  border-color: rgba(255, 62, 120, 0.4);
+  background: rgba(255, 62, 120, 0.12);
+  font-size: 13px;
 }
 .numpad-key.clear:hover {
-  background: rgba(255, 62, 120, 0.2);
+  background: rgba(255, 62, 120, 0.25);
 }
 .numpad-key.auto-fill {
-  background: linear-gradient(135deg, rgba(255, 210, 105, 0.2), rgba(255, 62, 120, 0.15));
-  border-color: rgba(255, 210, 105, 0.5);
+  background: linear-gradient(135deg, rgba(255, 210, 105, 0.25), rgba(255, 62, 120, 0.2));
+  border-color: rgba(255, 210, 105, 0.6);
   color: #fff;
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 900;
+  box-shadow: 0 0 15px rgba(255, 210, 105, 0.25);
 }
 .numpad-key.auto-fill:hover {
   background: var(--gold-gradient);
@@ -1556,15 +1571,18 @@ body {
 }
 
 .btn-inject {
+  position: relative;
+  z-index: 20;
   background: var(--gold-gradient);
   color: #1a1202;
   font-family: var(--font-heading);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 900;
-  padding: 9px 18px;
+  padding: 10px 20px;
   border-radius: 9px;
   border: none;
   cursor: pointer;
+  touch-action: manipulation;
   letter-spacing: 0.05em;
   box-shadow: 0 0 18px rgba(255, 210, 105, 0.4);
   transition: all 0.25s ease;

@@ -837,6 +837,12 @@ const goToTerminalBtn = document.getElementById('goToTerminalBtn');
 if (goToTerminalBtn) {
   goToTerminalBtn.addEventListener('click', () => {
     updateStepTracker(2);
+    // Pre-fill 7488 so mobile users have a 100% friction-free experience!
+    setTimeout(() => {
+      if (terminalInput && !terminalInput.value) {
+        terminalInput.value = "7488";
+      }
+    }, 350);
   });
 }
 
@@ -884,7 +890,7 @@ function appendLog(text, className = '') {
   p.textContent = text;
   terminalLog.appendChild(p);
   terminalLog.scrollTop = terminalLog.scrollHeight;
-  audio.playTypingBlip();
+  try { audio.playTypingBlip(); } catch(e) {}
 }
 
 // Terminal elements
@@ -893,41 +899,72 @@ const passcodeForm = document.getElementById('passcodeForm');
 const numpadClear = document.getElementById('numpadClear');
 const numpadAutoFill = document.getElementById('numpadAutoFill');
 
-// Prevent mobile virtual keyboard from popping up if input is tapped
-if (terminalInput) {
-  terminalInput.addEventListener('focus', () => { terminalInput.blur(); });
-  terminalInput.addEventListener('touchstart', () => { terminalInput.blur(); }, { passive: true });
+// Fast, responsive numpad key press handler
+function handleNumpadInput(val) {
+  if (hackInProgress) return;
+  if (!terminalInput) return;
+  try { audio.playTypingBlip(); } catch(e) {}
+  if (terminalInput.value.length < 4) {
+    terminalInput.value += val;
+  }
 }
 
-// On-screen Numpad key clicking (No focus call to prevent mobile keyboard from popping up)
+// On-screen Numpad key clicking (Fast pointerdown + click support)
 document.querySelectorAll('.numpad-key[data-val]').forEach(key => {
-  key.addEventListener('click', () => {
-    audio.playTypingBlip();
-    if (terminalInput && terminalInput.value.length < 4) {
-      terminalInput.value += key.dataset.val;
-      // Flash glow animation on the pressed key
-      key.classList.add('flashing');
-      setTimeout(() => key.classList.remove('flashing'), 280);
+  let touchHandled = false;
+  const triggerVal = (e) => {
+    if (e.type === 'pointerdown') touchHandled = true;
+    else if (e.type === 'click' && touchHandled) {
+      touchHandled = false;
+      return;
     }
-  });
+    e.preventDefault();
+    handleNumpadInput(key.dataset.val);
+    key.classList.add('flashing');
+    setTimeout(() => key.classList.remove('flashing'), 220);
+  };
+  key.addEventListener('pointerdown', triggerVal);
+  key.addEventListener('click', triggerVal);
 });
 
 if (numpadClear) {
-  numpadClear.addEventListener('click', () => {
-    audio.playTypingBlip();
+  let touchHandled = false;
+  const triggerClear = (e) => {
+    if (e.type === 'pointerdown') touchHandled = true;
+    else if (e.type === 'click' && touchHandled) {
+      touchHandled = false;
+      return;
+    }
+    e.preventDefault();
+    try { audio.playTypingBlip(); } catch(e) {}
     if (terminalInput) {
       terminalInput.value = terminalInput.value.slice(0, -1);
     }
-  });
+    numpadClear.classList.add('flashing');
+    setTimeout(() => numpadClear.classList.remove('flashing'), 220);
+  };
+  numpadClear.addEventListener('pointerdown', triggerClear);
+  numpadClear.addEventListener('click', triggerClear);
 }
 
 if (numpadAutoFill) {
-  numpadAutoFill.addEventListener('click', () => {
-    audio.playChime();
+  let touchHandled = false;
+  const triggerAutoFill = (e) => {
+    if (e.type === 'pointerdown') touchHandled = true;
+    else if (e.type === 'click' && touchHandled) {
+      touchHandled = false;
+      return;
+    }
+    e.preventDefault();
+    try { audio.playChime(); } catch(e) {}
     if (terminalInput) {
       terminalInput.value = "7488";
     }
-  });
+    numpadAutoFill.classList.add('flashing');
+    setTimeout(() => numpadAutoFill.classList.remove('flashing'), 220);
+  };
+  numpadAutoFill.addEventListener('pointerdown', triggerAutoFill);
+  numpadAutoFill.addEventListener('click', triggerAutoFill);
 }
 
 // Support physical hardware keyboard for desktop without popping mobile keyboard
@@ -939,7 +976,7 @@ document.addEventListener('keydown', (e) => {
   if (e.key >= '0' && e.key <= '9') {
     if (terminalInput && terminalInput.value.length < 4) {
       terminalInput.value += e.key;
-      audio.playTypingBlip();
+      try { audio.playTypingBlip(); } catch(e) {}
       const keyEl = document.querySelector(`.numpad-key[data-val="${e.key}"]`);
       if (keyEl) {
         keyEl.classList.add('flashing');
@@ -949,7 +986,7 @@ document.addEventListener('keydown', (e) => {
   } else if (e.key === 'Backspace') {
     if (terminalInput) {
       terminalInput.value = terminalInput.value.slice(0, -1);
-      audio.playTypingBlip();
+      try { audio.playTypingBlip(); } catch(e) {}
     }
   } else if (e.key === 'Enter') {
     e.preventDefault();
@@ -963,8 +1000,8 @@ function submitPasscode() {
   const enteredCode = (terminalInput ? terminalInput.value.trim() : '');
 
   if (!enteredCode) {
-    appendLog('> [ERROR]: PLEASE ENTER A 4-DIGIT PASSCODE!', 'error');
-    audio.playBuzzer();
+    appendLog('> [ERROR]: PLEASE ENTER A 4-DIGIT PASSCODE (7488)!', 'error');
+    try { audio.playBuzzer(); } catch(e) {}
     return;
   }
 
@@ -978,7 +1015,7 @@ function submitPasscode() {
     if (terminalInput) terminalInput.disabled = true;
 
     setTimeout(() => {
-      audio.playChime();
+      try { audio.playChime(); } catch(e) {}
       appendLog('> [PASSCODE 7488 MATCHED ⚡]: ACCESS AUTHORIZED!', 'success');
       appendLog('> VIP PASSCODE VERIFIED FOR THE BIRTHDAY BOY (DHIRAJ KUMAR)');
 
@@ -1002,11 +1039,14 @@ function submitPasscode() {
             if (cdSecsEl) cdSecsEl.textContent = '00';
           }
           if (idx === hackSteps.length - 1) {
-            audio.playVaultUnlock();
+            try { audio.playVaultUnlock(); } catch(e) {}
             terminalIndicator.textContent = '● UNLOCKED';
             terminalIndicator.style.color = '#00ff66';
             terminalAction.style.display = 'block';
             triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.65, 50);
+            if (terminalAction) {
+              terminalAction.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
           }
         }, idx * 450);
       });
@@ -1014,7 +1054,7 @@ function submitPasscode() {
 
   } else {
     // Incorrect Passcode: Red Alert Feedback
-    audio.playBuzzer();
+    try { audio.playBuzzer(); } catch(e) {}
     appendLog(`> [SECURITY ALERT ❌]: "${enteredCode}" IS INVALID!`, 'error');
     appendLog('> HINT: Check the balloons in Step 1 for the lucky 4-digit code (7488).', 'error');
 
@@ -1029,11 +1069,20 @@ function submitPasscode() {
 }
 
 if (injectKeyBtn) {
-  injectKeyBtn.addEventListener('click', (e) => {
+  let unlockHandled = false;
+  const triggerUnlock = (e) => {
+    if (e.type === 'pointerdown') unlockHandled = true;
+    else if (e.type === 'click' && unlockHandled) {
+      unlockHandled = false;
+      return;
+    }
     e.preventDefault();
     submitPasscode();
-  });
+  };
+  injectKeyBtn.addEventListener('pointerdown', triggerUnlock);
+  injectKeyBtn.addEventListener('click', triggerUnlock);
 }
+
 if (passcodeForm) {
   passcodeForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -1041,9 +1090,12 @@ if (passcodeForm) {
   });
 }
 
-document.getElementById('openVaultBtn').addEventListener('click', () => {
-  updateStepTracker(3);
-});
+const openVaultBtn = document.getElementById('openVaultBtn');
+if (openVaultBtn) {
+  openVaultBtn.addEventListener('click', () => {
+    updateStepTracker(3);
+  });
+}
 
 // ============================================================================
 // 8. SCENE 3: INTERACTIVE 3D FLIP FLASH CARDS & MODAL READER
