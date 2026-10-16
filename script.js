@@ -790,7 +790,7 @@ allBalloons.forEach((balloon, index) => {
 
       const codeTag = document.createElement('div');
       codeTag.className = 'balloon-floating-code';
-      codeTag.innerHTML = `🔑 <b>7488</b>`;
+      codeTag.innerHTML = `🔑 <b style="font-size: 16px; letter-spacing: 2px;">7488</b> <span style="font-size: 10px; opacity: 0.9; margin-left: 4px;">(Remember it!)</span>`;
       codeTag.style.position = 'absolute';
       codeTag.style.top = '10px';
       codeTag.style.left = '50%';
@@ -800,18 +800,30 @@ allBalloons.forEach((balloon, index) => {
       codeTag.style.fontFamily = 'var(--font-heading)';
       codeTag.style.fontSize = '14px';
       codeTag.style.fontWeight = '900';
-      codeTag.style.padding = '5px 12px';
+      codeTag.style.padding = '6px 14px';
       codeTag.style.borderRadius = '999px';
-      codeTag.style.boxShadow = '0 0 25px rgba(255, 210, 105, 0.95)';
-      codeTag.style.zIndex = '25';
-      codeTag.style.transition = 'all 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+      codeTag.style.boxShadow = '0 0 35px rgba(255, 210, 105, 0.95)';
+      codeTag.style.zIndex = '35';
+      codeTag.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
       balloon.appendChild(codeTag);
 
       setTimeout(() => {
-        codeTag.style.transform = 'translateX(-50%) translateY(-38px) scale(1.18)';
+        codeTag.style.transform = 'translateX(-50%) translateY(-42px) scale(1.15)';
       }, 20);
 
-      // Reveal code card & Next Button
+      // After 2.8s: The floating code BLASTS away into sparkles and vanishes!
+      setTimeout(() => {
+        const rect = codeTag.getBoundingClientRect();
+        triggerConfettiBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 28);
+        audio.playBalloonPop();
+        codeTag.style.transition = 'all 0.4s ease';
+        codeTag.style.transform = 'translateX(-50%) translateY(-65px) scale(1.5)';
+        codeTag.style.opacity = '0';
+        codeTag.style.filter = 'blur(6px)';
+        setTimeout(() => codeTag.remove(), 450);
+      }, 2800);
+
+      // Reveal code notice card & Next Button
       if (droppedKeyCard) {
         droppedKeyCard.classList.add('revealed');
         droppedKeyCard.style.display = 'flex';
@@ -1272,7 +1284,7 @@ function spawnDistantLanterns() {
   }
 }
 
-// Function to launch the lantern into the starry night sky (Slow, peaceful 16-second ascent)
+// Function to launch the lantern into the starry night sky with grand fireworks & sounds
 function launchSkyLantern() {
   if (lanternReleased) return;
   lanternReleased = true;
@@ -1282,11 +1294,15 @@ function launchSkyLantern() {
   if (heatProgressBox) heatProgressBox.style.display = 'none';
   if (lanternTouchHint) lanternTouchHint.style.display = 'none';
 
+  // Enable pure sky mode immediately so ALL cards, badges, titles and wish selectors vanish!
+  document.body.classList.add('pure-sky-mode');
+  if (lanternStage) lanternStage.classList.add('fullscreen-sky');
+
   // Fade out control station completely so NOTHING is on screen except the night sky & lantern!
   const lcs = document.querySelector('.lantern-control-station');
   if (lcs) {
     lcs.classList.add('fade-out');
-    setTimeout(() => { lcs.style.display = 'none'; }, 400);
+    setTimeout(() => { lcs.style.display = 'none'; }, 300);
   }
 
   // Clear inline transform so CSS @keyframes ascendToStars runs smoothly without conflicts
@@ -1296,29 +1312,52 @@ function launchSkyLantern() {
     mainSkyLantern.classList.add('ascending-to-sky');
   }
 
-  // Release flock of 28 floating background lanterns
+  // Release flock of 30+ floating background lanterns
   spawnDistantLanterns();
 
   // Gentle glitter shower as the prayer ascends
   triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.45, 50);
 
-  // Soft sparkle rain after 3.5s
+  // After 3.5s: Start exciting celebratory fireworks bursts in the night sky!
   setTimeout(() => {
+    try {
+      audio.playGrandCrackerBarrage();
+    } catch(e) {}
+    triggerMegaFestiveStorm(250);
     triggerSparkleRain(10, 5);
-  }, 3500);
 
-  // After 8.5s (when lantern is gliding serenely across the stars), reveal the minimal blessing card
+    // Launch multiple sky rockets
+    for (let r = 0; r < 6; r++) {
+      setTimeout(() => {
+        launchRocket();
+        try { audio.playCrackerSound(); } catch(e) {}
+      }, r * 700);
+    }
+  }, 3200);
+
+  // After 7.5s: Second wave of celebratory patakha sounds & colorful starry bursts!
+  setTimeout(() => {
+    try {
+      audio.playGrandCrackerBarrage();
+    } catch(e) {}
+    triggerDualCannons();
+    for (let r = 0; r < 5; r++) {
+      setTimeout(launchRocket, r * 600);
+    }
+  }, 7500);
+
+  // After 9s (when lantern is gliding serenely across the stars):
+  // Reveal ONLY the Next Step Button floating cleanly in the starry sky!
   setTimeout(() => {
     if (lanternBlessingCard) {
       lanternBlessingCard.style.display = 'block';
       lanternBlessingCard.classList.add('slide-up-glow');
-      audio.playChime();
     }
     if (goToCakeBtn) {
       goToCakeBtn.style.display = 'inline-flex';
       goToCakeBtn.classList.add('btn-pulse');
     }
-  }, 8500);
+  }, 9000);
 }
 
 if (igniteLanternBtn) {
@@ -1606,7 +1645,7 @@ function triggerMegaFestiveStorm(totalCount = 480) {
 }
 
 // ── Cake Typewriter ──────────────────────────────────────────────────────────
-const HBD_TEXT = '🎉 HAPPY BIRTHDAY, DHIRAJ! 🎂';
+const HBD_TEXT = '🎉 HAPPY BIRTHDAY, DHIRAJ 🎂';
 const HBD_SUB = '✨ May all your biggest dreams come true! ✨';
 
 function startCakeTypewriter() {
@@ -1859,48 +1898,66 @@ function handleShararatiDodge(e) {
   const rect = goToFinaleBtn.getBoundingClientRect();
   const burstX = rect.left + rect.width / 2;
   const burstY = rect.top + rect.height / 2;
-  triggerConfettiBurst(burstX, burstY, 35);
+  triggerConfettiBurst(burstX, burstY, 25);
+
+  // Responsive dodge distance based on screen width
+  const isMobile = window.innerWidth < 600;
+  const offsetLeft = isMobile ? -55 : -95;
+  const offsetRight = isMobile ? 55 : 95;
 
   if (finaleBtnDodges === 1) {
     // 1st Dodge: Jumps left with a funny tilt!
     goToFinaleBtn.style.transition = 'all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    goToFinaleBtn.style.transform = 'translate(-95px, -14px) rotate(-8deg) scale(0.95)';
+    goToFinaleBtn.style.transform = `translate(${offsetLeft}px, -14px) rotate(-8deg) scale(0.96)`;
     goToFinaleBtn.innerHTML = '<span>😜 Pakad ke dikhao! (Catch me!)</span>';
-  } else if (finaleBtnDodges === 2) {
+  } else if (finaleBtnDodges >= 2) {
     // 2nd Dodge: Jumps right with a reverse tilt!
     goToFinaleBtn.style.transition = 'all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    goToFinaleBtn.style.transform = 'translate(100px, 14px) rotate(8deg) scale(0.95)';
+    goToFinaleBtn.style.transform = `translate(${offsetRight}px, 14px) rotate(8deg) scale(0.96)`;
     goToFinaleBtn.innerHTML = '<span>💃 Arey ruko, thoda celebration to dekh lo! 🎉</span>';
 
-    // After 1.1s, settle smoothly back to center with success ready state!
+    // After 900ms, settle smoothly back to center with success ready state!
     setTimeout(() => {
       finaleBtnReady = true;
       goToFinaleBtn.style.transition = 'all 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-      goToFinaleBtn.style.transform = 'translate(0, 0) scale(1.05)';
+      goToFinaleBtn.style.transform = 'translate(0, 0) scale(1.02)';
       goToFinaleBtn.classList.add('btn-ready-glow');
       goToFinaleBtn.innerHTML = '<span>💌 Achha ab pakad liya! Chalo Dippu Ka Letter Kholein! 🚀</span>';
       audio.playChime();
-      triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.7, 50);
-    }, 1100);
+      triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.7, 40);
+    }, 900);
   }
 }
 
-// Hook hover and click/tap for Shararati button
+// Hook hover, pointerdown and click for Shararati button (mobile + desktop)
 if (goToFinaleBtn) {
+  let touchHandled = false;
+
   goToFinaleBtn.addEventListener('mouseenter', (e) => {
     if (!finaleBtnReady && goToFinaleBtn.style.display !== 'none' && goToFinaleBtn.style.opacity === '1') {
       handleShararatiDodge(e);
     }
   });
 
+  goToFinaleBtn.addEventListener('pointerdown', (e) => {
+    if (!finaleBtnReady) {
+      touchHandled = true;
+      handleShararatiDodge(e);
+    }
+  });
+
   goToFinaleBtn.addEventListener('click', (e) => {
+    if (touchHandled) {
+      touchHandled = false;
+      return;
+    }
     if (!finaleBtnReady) {
       handleShararatiDodge(e);
       return;
     }
     // Proceed to Step 5!
     updateStepTracker(5);
-    triggerMegaFestiveStorm(550);
+    triggerMegaFestiveStorm(450);
     setTimeout(() => {
       openEnvelopeSequence();
     }, 4500);
@@ -2173,25 +2230,71 @@ async function startTypewriterLetter() {
   if (quillStatus) quillStatus.textContent = "✨ Written with pure love · by your best friend 🤍";
   audio.playFanfare();
 
-  // Mega festive fireworks & confetti storm (matching user image!)
-  triggerMegaFestiveStorm(550);
-  setTimeout(() => triggerMegaFestiveStorm(480), 1500);
-  setTimeout(() => triggerMegaFestiveStorm(420), 3000);
+  // Mega festive fireworks & confetti storm
+  triggerMegaFestiveStorm(450);
 
-  // Reveal golden photo-frame tribute card
-  const tributeFrame = document.getElementById('tributeFrame');
-  if (tributeFrame) {
-    tributeFrame.style.display = 'block';
-    tributeFrame.style.opacity = '0';
-    tributeFrame.style.transform = 'scale(0.85) translateY(20px)';
-    tributeFrame.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-    setTimeout(() => {
-      tributeFrame.style.opacity = '1';
-      tributeFrame.style.transform = 'scale(1) translateY(0)';
-      audio.playChime();
-      triggerConfettiBurst(window.innerWidth / 2, window.innerHeight * 0.7, 80);
-    }, 100);
+  // Reveal the "Did you read?" confirmation prompt at the bottom of the letter!
+  const letterReadPrompt = document.getElementById('letterReadPrompt');
+  if (letterReadPrompt) {
+    letterReadPrompt.style.display = 'block';
+    letterReadPrompt.classList.add('slide-up-glow');
+    letterReadPrompt.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
+}
+
+// Roll up and close letter, keeping only the final Legend Card!
+function rollUpAndCloseLetter() {
+  const starCard = document.getElementById('starMessageCard');
+  const tributeFrame = document.getElementById('tributeFrame');
+
+  audio.playChime();
+  triggerDualCannons();
+
+  if (starCard) {
+    starCard.classList.remove('slide-open');
+    starCard.classList.add('roll-up-close');
+    setTimeout(() => {
+      starCard.style.display = 'none';
+    }, 700);
+  }
+
+  // Smoothly reveal ONLY the final Legend Dhiraj tribute card!
+  setTimeout(() => {
+    if (tributeFrame) {
+      tributeFrame.style.display = 'block';
+      tributeFrame.style.opacity = '0';
+      tributeFrame.style.transform = 'scale(0.85) translateY(20px)';
+      tributeFrame.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+      setTimeout(() => {
+        tributeFrame.style.opacity = '1';
+        tributeFrame.style.transform = 'scale(1) translateY(0)';
+        audio.playFanfare();
+        triggerMegaFestiveStorm(550);
+        tributeFrame.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 50);
+    }
+  }, 400);
+}
+
+// Hook "Did you read?" prompt buttons
+const readYesBtn = document.getElementById('readYesBtn');
+const readNoBtn = document.getElementById('readNoBtn');
+const readPromptHint = document.getElementById('readPromptHint');
+
+if (readYesBtn) {
+  readYesBtn.addEventListener('click', () => {
+    rollUpAndCloseLetter();
+  });
+}
+
+if (readNoBtn) {
+  readNoBtn.addEventListener('click', () => {
+    if (readPromptHint) {
+      readPromptHint.style.display = 'block';
+      readPromptHint.textContent = 'Take your time, mere bhai! ❤️ Read everything peacefully, then tap "Yes, I read it!".';
+      readPromptHint.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
 }
 
 // ============================================================================
@@ -2467,14 +2570,13 @@ function resetEntireExperience() {
 
 const replayBtn = document.getElementById('replayBtn');
 if (replayBtn) {
-  replayBtn.addEventListener('click', resetEntireExperience);
-}
-
-const grandReplayBtn = document.getElementById('grandReplayBtn');
-if (grandReplayBtn) {
-  grandReplayBtn.addEventListener('click', () => {
+  replayBtn.addEventListener('click', () => {
     try { audio.playChime(); } catch(e) {}
+    localStorage.removeItem('dhiraj_birthday_saved_step');
+    localStorage.removeItem('dhiraj_birthday_highest_step');
+    // If user wants a fresh clean journey, reload or reset seamlessly
     resetEntireExperience();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 

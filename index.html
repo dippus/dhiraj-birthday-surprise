@@ -209,17 +209,17 @@
           </div>
         </div>
 
-        <!-- Dropped / Revealed VIP Code Card (Appears when balloon pops with 7488) -->
+        <!-- Dropped / Discovered VIP Code Notice (Code blasts away, user must remember) -->
         <div class="dropped-key-card" id="droppedKeyCard" style="display: none;">
           <div class="key-card-left">
             <div class="key-glow-icon">🗝️</div>
             <div class="key-info">
-              <div class="key-title">VIP ACCESS CODE FOUND</div>
-              <span class="key-code" id="secretPasscode">7488</span>
+              <div class="key-title">VIP ACCESS CODE DISCOVERED!</div>
+              <small class="key-hint-note">Memorize your 4-digit code to open the vault</small>
             </div>
           </div>
-          <button id="goToTerminalBtn" class="btn-royal btn-pulse">
-            <span>Proceed to Digital Vault 🗝️ →</span>
+          <button id="goToTerminalBtn" class="btn-royal btn-pulse btn-compact">
+            <span>Proceed to Vault 🗝️ →</span>
           </button>
         </div>
       </div>
@@ -425,7 +425,7 @@
             <span class="intro-badge-dot"></span>
             <span>STEP 04 · THE CAKE CUTTING CEREMONY</span>
           </div>
-          <h2 class="section-title">Cut the Cake, <span class="gold-gradient">Dhiraj! 🎂</span></h2>
+          <h2 class="section-title">Cut the Cake, <span class="gold-gradient">Dhiraj 🎂</span></h2>
           <div class="intro-divider"></div>
         </div>
 
@@ -576,6 +576,20 @@
           </div>
 
           <div class="card-ornament bottom">✦ ✦ ✦</div>
+
+          <!-- Did you read prompt (rolls up letter and keeps only Legend card) -->
+          <div class="letter-read-prompt" id="letterReadPrompt" style="display: none;">
+            <div class="read-prompt-title">💌 Did you read Dippu's full message?</div>
+            <div class="read-prompt-buttons">
+              <button type="button" id="readYesBtn" class="btn-royal btn-compact">
+                <span>Yes, I read it! ❤️</span>
+              </button>
+              <button type="button" id="readNoBtn" class="btn-outline-small">
+                <span>No, let me read more 📖</span>
+              </button>
+            </div>
+            <p class="read-prompt-hint" id="readPromptHint" style="display: none;">Take your time, mere bhai! ❤️ When you are ready, tap "Yes".</p>
+          </div>
         </article>
 
         <!-- Photo Frame Tribute Card -->
@@ -595,11 +609,6 @@
               <div class="frame-tagline">The Birthday Legend · 19 OCT 2026</div>
               <div class="frame-divider"></div>
               <div class="frame-footer">Crafted with pure ❤️ by Dippu</div>
-              <div class="tribute-replay-box" style="margin-top: 18px; text-align: center;">
-                <button id="grandReplayBtn" class="btn-royal btn-pulse" style="font-size: 14px; padding: 12px 28px;">
-                  <span>🔄 Replay Birthday Journey From Start ✨</span>
-                </button>
-              </div>
             </div>
           </div>
         </div>
