@@ -481,8 +481,9 @@
 
             <!-- ===== 3D ROUNDED CUTE BIRTHDAY CAKE TIERS ===== -->
             <div class="cake-body-stack">
-              <!-- TOP TIER (Cute Strawberry & Cream) -->
-              <div class="cake-tier cake-tier-top">
+              <!-- TOP TIER (The Birthday Crown Tier — Sliced with Knife!) -->
+              <div class="cake-tier cake-tier-top" id="cakeTopTier">
+                <!-- Frosting Crown & Cherries -->
                 <div class="tier-frosting-top">
                   <div class="piped-creams">
                     <span class="cream-drop"></span><span class="cream-drop"></span>
@@ -498,32 +499,63 @@
                     <i class="sp sp-gold"></i><i class="sp sp-pink"></i><i class="sp sp-cyan"></i><i class="sp sp-purple"></i>
                   </div>
                 </div>
-                <div class="cake-drips strawberry-drips">
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
+
+                <!-- Top Tier Cylinder with Real Cut Slice Cavity -->
                 <div class="tier-cylinder tier-top-cylinder">
+                  <div class="cake-drips strawberry-drips">
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
                   <div class="cylinder-shine"></div>
+                  
+                  <!-- Top Tier Wedge Cutout (Revealed when knife cuts top tier!) -->
+                  <div class="cake-cut-cavity top-cavity" id="topCutCavity">
+                    <div class="cavity-filling">
+                      <span class="layer-cake-sponge"></span>
+                      <span class="layer-cake-jam"></span>
+                      <span class="layer-cake-cream"></span>
+                      <span class="layer-cake-sponge"></span>
+                    </div>
+                  </div>
+
                   <div class="cylinder-decor">⭐ · ✦ · ⭐</div>
+                </div>
+
+                <!-- Animated Pull-Out Slice of Top Tier on Saucer -->
+                <div class="cake-slice-presentation" id="cakeSlicePresentation">
+                  <div class="slice-saucer"></div>
+                  <div class="slice-wedge">
+                    <div class="slice-top-frosting">
+                      <span class="slice-cherry">🍓</span>
+                      <div class="slice-sprinkle"></div>
+                    </div>
+                    <div class="slice-layers">
+                      <div class="slice-layer sponge-top"></div>
+                      <div class="slice-layer cream-top"></div>
+                      <div class="slice-layer jam-top"></div>
+                      <div class="slice-layer sponge-top"></div>
+                    </div>
+                  </div>
+                  <div class="slice-sparkle-stars">✨ 🍰 ✨</div>
                 </div>
               </div>
 
               <!-- MIDDLE TIER (Lavender Vanilla with Royal Nameband) -->
               <div class="cake-tier cake-tier-mid">
-                <div class="tier-frosting-top">
+                <div class="tier-frosting-top mid-frosting">
                   <div class="piped-pearls">
                     <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                   </div>
                 </div>
-                <div class="cake-drips vanilla-drips">
-                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
                 <div class="tier-cylinder tier-mid-cylinder">
+                  <div class="cake-drips vanilla-drips">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
                   <div class="cylinder-shine"></div>
                   <div class="cake-name-band" id="cakeNameTag">✨ DHIRAJ ✨</div>
                 </div>
               </div>
 
-              <!-- BASE TIER (Rich Chocolate Ganache with Cut Cavity) -->
+              <!-- BASE TIER (Rich Solid Chocolate Ganache) -->
               <div class="cake-tier cake-tier-base" id="cakeBaseTier">
                 <div class="tier-frosting-top choc-top">
                   <div class="piped-creams choc-creams">
@@ -533,43 +565,14 @@
                     <span class="cream-drop choc"></span><span class="cream-drop choc"></span>
                   </div>
                 </div>
-                <div class="cake-drips choc-drips">
-                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
                 <div class="tier-cylinder tier-base-cylinder">
-                  <div class="cylinder-shine"></div>
-                  <!-- Cut cavity opening when slice pulls out -->
-                  <div class="cake-cut-cavity">
-                    <div class="cavity-filling">
-                      <span class="layer-cake-biscuit"></span>
-                      <span class="layer-cake-jam"></span>
-                      <span class="layer-cake-biscuit"></span>
-                      <span class="layer-cake-cream"></span>
-                    </div>
+                  <div class="cake-drips choc-drips">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
                   </div>
+                  <div class="cylinder-shine"></div>
                   <div class="base-cherries-row">🍓 🍒 🍓 🍒 🍓</div>
                 </div>
               </div>
-            </div>
-
-            <!-- ===== ANIMATED PULL-OUT CAKE SLICE ON MINI SAUCER ===== -->
-            <div class="cake-slice-presentation" id="cakeSlicePresentation">
-              <div class="slice-saucer"></div>
-              <div class="slice-wedge">
-                <div class="slice-top-frosting">
-                  <span class="slice-cherry">🍒</span>
-                  <div class="slice-sprinkle"></div>
-                </div>
-                <div class="slice-layers">
-                  <div class="slice-layer sponge1"></div>
-                  <div class="slice-layer cream1"></div>
-                  <div class="slice-layer sponge2"></div>
-                  <div class="slice-layer jam"></div>
-                  <div class="slice-layer sponge3"></div>
-                </div>
-                <div class="slice-crust"></div>
-              </div>
-              <div class="slice-sparkle-stars">✨ 🍰 ✨</div>
             </div>
 
             <!-- Golden Luxury Porcelain Cake Pedestal Stand -->
