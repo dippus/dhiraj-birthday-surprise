@@ -363,7 +363,7 @@
               <div class="lantern-inscription">
                 <span class="lantern-sacred-om">ॐ नमः शिवाय</span>
                 <p class="lantern-wish-text" id="lanternWishText">May Maha Dev always protect, guide and bless Dhiraj with infinite joy! 🙏✨</p>
-                <span class="lantern-tagline">✦ Dedicated to Dhiraj Kumar · 2026 ✦</span>
+                <span class="lantern-tagline">✦ Dhiraj · 2026 ✦</span>
               </div>
 
               <!-- Lower Flame Chamber / Diya -->
@@ -373,10 +373,11 @@
                   <div class="lantern-flame" id="lanternFlame"></div>
                 </div>
               </div>
-              <span class="lantern-touch-hint" id="lanternTouchHint">👆 Touch Diya or Button to Light</span>
             </div>
             <!-- Heat Smoke / Shimmer -->
             <div class="lantern-heat-haze" id="lanternHeatHaze"></div>
+            <!-- Touch Hint floats BELOW lantern paper, always visible -->
+            <span class="lantern-touch-hint" id="lanternTouchHint">👆 Touch Diya or Button to Light</span>
           </div>
 
           <!-- Interactive Ignite / Release Control Station -->
@@ -439,61 +440,66 @@
           </div>
 
           <div class="cake-wrapper" id="cakeWrapper" title="Cake par tap karke candle bujhao ya cut karo!">
-            <!-- 4 Colorful Candles Row (Systematic Extinguish) -->
+
+            <!-- ===== 4 COLORFUL CANDLES ROW ===== -->
             <div class="candles-row" id="candlesRow">
-              <div class="candle c-gold" id="candle1" title="Golden Star Candle">
+              <div class="candle c-gold" id="candle1">
                 <div class="flame flame-gold" id="flame1"></div>
                 <div class="wick"></div>
                 <div class="candle-body"></div>
               </div>
-              <div class="candle c-pink" id="candle2" title="Rose Pink Candle">
+              <div class="candle c-pink" id="candle2">
                 <div class="flame flame-pink" id="flame2"></div>
                 <div class="wick"></div>
                 <div class="candle-body"></div>
               </div>
-              <div class="candle c-cyan" id="candle3" title="Sky Cyan Candle">
+              <div class="candle c-cyan" id="candle3">
                 <div class="flame flame-cyan" id="flame3"></div>
                 <div class="wick"></div>
                 <div class="candle-body"></div>
               </div>
-              <div class="candle c-purple" id="candle4" title="Royal Purple Candle">
+              <div class="candle c-purple" id="candle4">
                 <div class="flame flame-purple" id="flame4"></div>
                 <div class="wick"></div>
                 <div class="candle-body"></div>
               </div>
             </div>
 
-            <!-- Cake Name Tag — sits outside the split container so it stays intact -->
-            <div class="cake-name-tag" id="cakeNameTag">✨ DHIRAJ ✨</div>
-
-            <!-- Real Split Cake Container (Divides visibly into two halves upon cut!) -->
-            <div class="cake-split-container" id="cakeSplitContainer">
-              <!-- Left Sliced Half -->
-              <div class="cake-half left-half">
-                <div class="half-top-tier">
-                  <div class="frosting-layer"></div>
-                  <span class="half-cake-text">🌸</span>
-                </div>
-                <div class="half-bottom-tier">
-                  <div class="half-cherries">🍓</div>
-                </div>
+            <!-- ===== REALISTIC 3-TIER BIRTHDAY CAKE ===== -->
+            <!-- TOP TIER -->
+            <div class="cake-tier cake-tier-top">
+              <div class="cake-frosting-top"></div>
+              <div class="cake-drips"><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="cake-tier-body">
+                <div class="cake-tier-shine"></div>
+                <div class="cake-deco-stars">⭐ ✦ ⭐</div>
               </div>
+            </div>
 
-              <!-- Exposed Delicious Chocolate & Strawberry Slice Core -->
-              <div class="cake-slice-core" id="cakeSliceCore">
-                <div class="slice-inner-filling"></div>
-                <div class="slice-glitter-sparks">✨</div>
+            <!-- MIDDLE TIER -->
+            <div class="cake-tier cake-tier-mid">
+              <div class="cake-frosting-top"></div>
+              <div class="cake-drips pink-drips"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="cake-tier-body">
+                <div class="cake-tier-shine"></div>
+                <div class="cake-name-band" id="cakeNameTag">✨ DHIRAJ ✨</div>
               </div>
+            </div>
 
-              <!-- Right Sliced Half -->
-              <div class="cake-half right-half">
-                <div class="half-top-tier">
-                  <div class="frosting-layer"></div>
-                  <span class="half-cake-text">💫</span>
+            <!-- BOTTOM TIER -->
+            <div class="cake-tier cake-tier-base" id="cakeSplitContainer">
+              <div class="cake-frosting-top choc"></div>
+              <div class="cake-drips choc-drips"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="cake-tier-body base-body">
+                <div class="cake-tier-shine"></div>
+                <!-- Left half slice (sliced state) -->
+                <div class="cake-half left-half">
+                  <div class="cake-slice-core" id="cakeSliceCore">
+                    <div class="slice-inner-filling"></div>
+                    <div class="slice-glitter-sparks">✨</div>
+                  </div>
                 </div>
-                <div class="half-bottom-tier">
-                  <div class="half-cherries">🍒</div>
-                </div>
+                <div class="cake-cherries-row">🍓 🍒 🍓 🍒 🍓</div>
               </div>
             </div>
 

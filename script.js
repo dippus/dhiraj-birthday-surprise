@@ -1221,10 +1221,13 @@ function igniteLanternDiya() {
     if (heatFill) heatFill.style.width = `${heatProgress}%`;
     if (heatPercentage) heatPercentage.textContent = `${Math.round(heatProgress)}%`;
 
-    // Scale lantern slightly with hot air expansion
+    // Scale lantern paper body slightly with hot air expansion
     const expandScale = 1 + (heatProgress / 100) * 0.08;
     if (mainSkyLantern && !lanternReleased) {
-      mainSkyLantern.style.transform = `scale(${expandScale}) translateY(${-heatProgress * 0.12}px)`;
+      const paperBody = mainSkyLantern.querySelector('.lantern-paper-body');
+      if (paperBody) {
+        paperBody.style.transform = `scale(${expandScale}) translateY(${-heatProgress * 0.10}px)`;
+      }
     }
 
     if (heatProgress >= 100) {
@@ -1309,6 +1312,9 @@ function launchSkyLantern() {
   if (mainSkyLantern) {
     mainSkyLantern.style.transform = '';
     mainSkyLantern.classList.remove('warming-up', 'ready-to-float');
+    // Also clear the paper body transform from heat-expand animation
+    const paperBody = mainSkyLantern.querySelector('.lantern-paper-body');
+    if (paperBody) paperBody.style.transform = '';
     mainSkyLantern.classList.add('ascending-to-sky');
   }
 
@@ -2520,6 +2526,8 @@ function resetEntireExperience() {
   if (mainSkyLantern) {
     mainSkyLantern.className = 'sky-lantern-wrapper';
     mainSkyLantern.style.transform = '';
+    const paperBody = mainSkyLantern.querySelector('.lantern-paper-body');
+    if (paperBody) { paperBody.style.transform = ''; paperBody.style.background = ''; }
   }
   if (lanternFlame) lanternFlame.classList.remove('ignited');
   if (lanternHeatHaze) lanternHeatHaze.classList.remove('active');

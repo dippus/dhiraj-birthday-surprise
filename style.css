@@ -1742,22 +1742,25 @@ body {
   position: absolute;
   top: 25px;
   right: 35px;
-  width: 58px;
-  height: 58px;
+  width: 62px;
+  height: 62px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fffbf0 35%, #fde68a 70%, #d4af37 100%);
+  background: radial-gradient(circle at 35% 30%, #fffef5 0%, #fdf9d4 25%, #fde68a 65%, #d4af37 100%);
   box-shadow: 
-    0 0 25px rgba(255, 255, 255, 0.95),
-    0 0 55px rgba(253, 230, 138, 0.75),
-    0 0 100px rgba(212, 175, 55, 0.4);
-  opacity: 0.95;
+    0 0 30px rgba(255, 255, 255, 0.98),
+    0 0 65px rgba(253, 230, 138, 0.82),
+    0 0 120px rgba(212, 175, 55, 0.5),
+    inset -8px -8px 20px rgba(200, 160, 60, 0.3);
+  opacity: 0.97;
 }
 .sky-moon::after {
   content: '';
   position: absolute;
-  inset: 0;
+  width: 14px; height: 14px;
   border-radius: 50%;
-  background: radial-gradient(circle at 65% 65%, rgba(180, 140, 60, 0.25) 0%, transparent 60%);
+  background: rgba(200, 155, 40, 0.25);
+  top: 30%; left: 55%;
+  box-shadow: -22px 12px 0 rgba(200, 155, 40, 0.18), 10px -15px 0 rgba(200, 155, 40, 0.12);
   pointer-events: none;
 }
 .sky-distant-stars {
@@ -1771,9 +1774,13 @@ body {
     radial-gradient(1px 1px at 340px 60px, #ffd269, transparent),
     radial-gradient(2px 2px at 450px 100px, #ffffff, transparent),
     radial-gradient(1.5px 1.5px at 580px 45px, #ffffff, transparent),
-    radial-gradient(2.5px 2.5px at 690px 90px, #ffd269, transparent);
-  background-size: 600px 280px;
-  opacity: 0.75;
+    radial-gradient(2.5px 2.5px at 690px 90px, #ffd269, transparent),
+    radial-gradient(1px 1px at 80px 160px, #ffffff, transparent),
+    radial-gradient(1.5px 1.5px at 320px 180px, #ffd269, transparent),
+    radial-gradient(1px 1px at 500px 150px, #ffffff, transparent),
+    radial-gradient(2px 2px at 750px 55px, #ffffff, transparent);
+  background-size: 800px 300px;
+  opacity: 0.8;
   animation: starTwinkle 4s infinite alternate ease-in-out;
 }
 @keyframes starTwinkle {
@@ -1818,10 +1825,12 @@ body {
 .sky-lantern-wrapper {
   position: relative;
   width: 210px;
-  height: 270px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 10px auto;
   cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  transition: filter 0.5s ease;
   z-index: 10;
   transform-origin: center bottom;
   animation: lanternGentleSway 3.6s infinite ease-in-out alternate;
@@ -1835,8 +1844,8 @@ body {
 /* Paper Envelope Body */
 .lantern-paper-body {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 210px;
+  height: 265px;
   background: linear-gradient(180deg, #ffeed1 0%, #ffd08a 35%, #f59e0b 80%, #b45309 100%);
   border-radius: 46% 46% 36% 36% / 55% 55% 38% 38%;
   box-shadow: 
@@ -1848,9 +1857,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 18px 14px;
+  padding: 18px 16px 14px;
   overflow: hidden;
   transition: all 0.6s ease;
+  flex-shrink: 0;
 }
 
 /* Translucent Bamboo Ribs Pattern */
@@ -1892,36 +1902,41 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 180px;
-  padding: 4px 6px;
+  max-width: 170px;
+  padding: 2px 6px;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 .lantern-sacred-om {
   font-family: var(--font-royal);
-  font-size: 13.5px;
+  font-size: 11px;
   font-weight: 900;
   color: #78350f;
-  letter-spacing: 0.15em;
-  margin-bottom: 4px;
+  letter-spacing: 0.10em;
+  margin-bottom: 3px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 .lantern-wish-text {
   font-family: var(--font-handwritten);
-  font-size: 14.5px;
+  font-size: 11px;
   font-weight: 700;
   color: #451a03;
-  line-height: 1.25;
-  margin: 2px 0 6px;
+  line-height: 1.2;
+  margin: 1px 0 3px;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
   transition: all 0.3s ease;
   word-break: break-word;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .lantern-tagline {
   font-family: var(--font-heading);
-  font-size: 8.5px;
+  font-size: 7px;
   font-weight: 800;
   color: #92400e;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -1977,24 +1992,26 @@ body {
   100% { transform: scale(1.1) rotate(-1deg); }
 }
 
-/* Interactive Lantern Touch Hint */
+/* Interactive Lantern Touch Hint — floats below lantern paper, always visible */
 .lantern-touch-hint {
   display: inline-block;
   font-family: var(--font-heading);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
   color: #ffd269;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.65);
   border: 1px solid rgba(255, 210, 105, 0.4);
   border-radius: 999px;
   padding: 4px 14px;
-  margin-top: 8px;
+  margin-top: 10px;
   letter-spacing: 0.04em;
   animation: hintPulse 1.4s infinite alternate ease-in-out;
   pointer-events: none;
   user-select: none;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
   z-index: 10;
+  position: relative;
+  flex-shrink: 0;
 }
 @keyframes hintPulse {
   0% { transform: scale(1); filter: brightness(1); }
@@ -2016,7 +2033,7 @@ body {
 }
 
 /* Ready to Float State */
-.sky-lantern-wrapper.ready-to-float {
+.sky-lantern-wrapper.ready-to-float .lantern-paper-body {
   animation: readyLanternHover 1.5s infinite ease-in-out alternate !important;
 }
 @keyframes readyLanternHover {
@@ -2226,7 +2243,7 @@ body.pure-sky-mode .lantern-wish-selector {
 .lantern-stage-container.fullscreen-sky {
   position: fixed !important;
   inset: 0 !important;
-  width: 100vw !important;
+  width: 100dvw !important;
   height: 100vh !important;
   height: 100dvh !important;
   z-index: 999999 !important;
@@ -2430,36 +2447,36 @@ body.pure-sky-mode .lantern-wish-selector {
   background: #ffd269 !important;
 }
 
-/* ================= SCENE 4: INTERACTIVE CAKE ================= */
+/* ================= SCENE 4: REALISTIC 3-TIER BIRTHDAY CAKE ================= */
 .cake-stage {
-  padding: 25px 0 10px;
+  padding: 20px 0 8px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
+  min-height: 300px;
 }
 .cake-wrapper {
   position: relative;
-  width: 240px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 20px 32px rgba(0,0,0,0.6));
 }
-.cake-wrapper:hover:not(.sliced) { transform: scale(1.03); }
+.cake-wrapper:hover:not(.sliced) { transform: scale(1.02) translateY(-4px); }
 
-/* Candles Row & 4 Multi-Color Candles */
+/* ===== CANDLES ROW ===== */
 .candles-row {
   display: flex;
   justify-content: center;
-  gap: 22px;
-  margin-bottom: -4px;
-  z-index: 5;
+  gap: 18px;
+  margin-bottom: 2px;
+  z-index: 10;
+  position: relative;
 }
 .candle { display: flex; flex-direction: column; align-items: center; }
-
-/* 4 Distinct Candle Colors */
 .candle.c-gold .candle-body { background: repeating-linear-gradient(45deg, #fff, #fff 5px, #ffd269 5px, #ffd269 10px); }
 .candle.c-pink .candle-body { background: repeating-linear-gradient(45deg, #fff, #fff 5px, #ff3e78 5px, #ff3e78 10px); }
 .candle.c-cyan .candle-body { background: repeating-linear-gradient(45deg, #fff, #fff 5px, #00f0ff 5px, #00f0ff 10px); }
@@ -2473,6 +2490,176 @@ body.pure-sky-mode .lantern-wish-selector {
   transform-origin: center bottom;
   transition: all 0.35s ease;
 }
+.flame-gold { background: radial-gradient(ellipse at bottom, #fff 0%, #ffd269 35%, #ff9800 85%, transparent 100%); box-shadow: 0 0 16px #ffd269, 0 0 30px #ff9800; }
+.flame-pink { background: radial-gradient(ellipse at bottom, #fff 0%, #ff8da1 35%, #ff3e78 85%, transparent 100%); box-shadow: 0 0 16px #ff8da1, 0 0 30px #ff3e78; }
+.flame-cyan { background: radial-gradient(ellipse at bottom, #fff 0%, #a5f3fc 35%, #00f0ff 85%, transparent 100%); box-shadow: 0 0 16px #00f0ff, 0 0 30px #0284c7; }
+.flame-purple { background: radial-gradient(ellipse at bottom, #fff 0%, #d8b4fe 35%, #a855f7 85%, transparent 100%); box-shadow: 0 0 16px #a855f7, 0 0 30px #7e22ce; }
+
+.flame.extinguished {
+  opacity: 0 !important;
+  transform: scale(0.1) translateY(-20px) !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8) !important;
+  transition: transform 0.4s cubic-bezier(0.1, 1, 0.1, 1), opacity 0.3s ease !important;
+}
+.candle { position: relative; }
+.candle.blown::after {
+  content: '💨'; position: absolute; top: -18px; font-size: 14px;
+  animation: smokePuff 1s ease-out forwards; pointer-events: none;
+}
+@keyframes smokePuff {
+  0% { opacity: 0.9; transform: translateY(0) scale(0.6); }
+  100% { opacity: 0; transform: translateY(-24px) scale(1.5) rotate(15deg); }
+}
+@keyframes flameFlicker {
+  0% { transform: rotate(-3deg) scaleY(1); }
+  50% { transform: rotate(3deg) scaleY(1.08) scaleX(0.92); }
+  100% { transform: rotate(-1deg) scaleY(0.95); }
+}
+.wick { width: 2px; height: 7px; background: #333; }
+.candle-body { width: 11px; height: 34px; border-radius: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.3); }
+
+/* ===== CAKE TIERS — Stacked Realistic 3-Layer Pyramid Cake ===== */
+.cake-tier {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* White frosting cap on top of each tier */
+.cake-frosting-top {
+  width: calc(100% + 10px);
+  height: 13px;
+  background: linear-gradient(180deg, #ffffff 0%, #fce7f3 100%);
+  border-radius: 999px;
+  position: relative;
+  z-index: 5;
+  box-shadow: 0 3px 10px rgba(255,255,255,0.6), inset 0 -2px 4px rgba(220,150,180,0.3);
+}
+.cake-frosting-top.choc {
+  background: linear-gradient(180deg, #d97706 0%, #b45309 100%);
+  box-shadow: 0 3px 10px rgba(180,83,9,0.5);
+}
+
+/* Frosting Drip drops */
+.cake-drips {
+  display: flex;
+  justify-content: space-evenly;
+  width: calc(100% + 4px);
+  position: relative;
+  z-index: 4;
+  margin-top: -5px;
+  padding: 0 6px;
+}
+.cake-drips span {
+  width: 8px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.4) 100%);
+  border-radius: 0 0 6px 6px;
+  display: block;
+}
+.cake-drips span:nth-child(1) { height: 18px; }
+.cake-drips span:nth-child(2) { height: 11px; margin-top: 5px; }
+.cake-drips span:nth-child(3) { height: 22px; }
+.cake-drips span:nth-child(4) { height: 9px; margin-top: 7px; }
+.cake-drips span:nth-child(5) { height: 15px; margin-top: 2px; }
+.cake-drips span:nth-child(6) { height: 19px; }
+.cake-drips span:nth-child(7) { height: 13px; margin-top: 3px; }
+.cake-drips.pink-drips span {
+  background: linear-gradient(180deg, #ff8da1 0%, rgba(255,141,161,0.35) 100%);
+}
+.cake-drips.choc-drips span {
+  background: linear-gradient(180deg, #d97706 0%, rgba(217,119,6,0.35) 100%);
+  width: 10px;
+}
+
+/* TOP TIER — Smallest, strawberry pink */
+.cake-tier-top { width: 110px; z-index: 4; }
+.cake-tier-top .cake-tier-body {
+  width: 100%;
+  height: 56px;
+  background: linear-gradient(180deg, #ff8da1 0%, #e84b6e 58%, #c2304f 100%);
+  border-radius: 10px 10px 4px 4px;
+  box-shadow: inset 0 6px 14px rgba(255,255,255,0.45), inset 0 -6px 12px rgba(0,0,0,0.2), 0 4px 10px rgba(0,0,0,0.3);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  position: relative; overflow: hidden;
+}
+.cake-deco-stars {
+  font-size: 12px; letter-spacing: 3px;
+  color: rgba(255,255,255,0.95);
+  text-shadow: 0 0 8px rgba(255,220,100,0.9);
+  position: relative; z-index: 2;
+}
+
+/* MIDDLE TIER — Royal purple */
+.cake-tier-mid { width: 162px; z-index: 3; margin-top: -3px; }
+.cake-tier-mid .cake-tier-body {
+  width: 100%;
+  height: 70px;
+  background: linear-gradient(180deg, #a855f7 0%, #7c3aed 58%, #5b21b6 100%);
+  border-radius: 10px 10px 4px 4px;
+  box-shadow: inset 0 7px 16px rgba(255,255,255,0.35), inset 0 -8px 16px rgba(0,0,0,0.3), 0 6px 14px rgba(0,0,0,0.35);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  position: relative; overflow: hidden;
+}
+.cake-name-band {
+  font-family: var(--font-royal);
+  font-size: 12px; font-weight: 900;
+  color: #ffd269;
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 12px rgba(255,210,80,0.9), 0 2px 4px rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.38);
+  border: 1.5px solid rgba(255,210,105,0.6);
+  border-radius: 14px; padding: 3px 12px;
+  position: relative; z-index: 2;
+  animation: namePulse 2.4s ease-in-out infinite alternate;
+  white-space: nowrap;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+@keyframes namePulse {
+  from { text-shadow: 0 0 10px rgba(255,200,80,0.7); box-shadow: 0 0 10px rgba(255,180,50,0.3); }
+  to   { text-shadow: 0 0 22px rgba(255,140,200,1), 0 0 8px rgba(255,220,80,0.9); box-shadow: 0 0 20px rgba(255,120,200,0.5); }
+}
+
+/* BOTTOM BASE TIER — Widest, rich chocolate */
+.cake-tier-base { width: 210px; z-index: 2; margin-top: -3px; }
+.cake-tier-base .base-body {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(180deg, #92400e 0%, #78350f 55%, #4a1e07 100%);
+  border-radius: 10px 10px 6px 6px;
+  box-shadow: inset 0 8px 18px rgba(255,180,100,0.18), inset 0 -10px 20px rgba(0,0,0,0.45), 0 8px 18px rgba(0,0,0,0.5);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  position: relative; overflow: hidden;
+}
+.cake-cherries-row {
+  font-size: 15px; letter-spacing: 3px; position: relative; z-index: 2;
+  animation: cherryBounce 1.8s infinite ease-in-out alternate;
+}
+@keyframes cherryBounce {
+  0% { transform: translateY(0); } 100% { transform: translateY(-3px); }
+}
+
+/* Slice separation on cut — base tier splits */
+.cake-wrapper.sliced .cake-tier-base {
+  display: flex; flex-direction: row; gap: 42px;
+  transition: gap 0.85s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.cake-wrapper.sliced .cake-half.left-half {
+  transform: translateX(-10px) rotate(-7deg);
+  filter: drop-shadow(-6px 8px 16px rgba(0,0,0,0.5));
+  transition: transform 0.85s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* Tier Shine (glossy sheen overlay) */
+.cake-tier-shine {
+  position: absolute; top: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0) 100%);
+  border-radius: 10px 10px 0 0; pointer-events: none; z-index: 3;
+}
+
+
 .flame-gold {
   background: radial-gradient(ellipse at bottom, #fff 0%, #ffd269 35%, #ff9800 85%, transparent 100%);
   box-shadow: 0 0 16px #ffd269, 0 0 30px #ff9800;
@@ -2592,158 +2779,23 @@ body.pure-sky-mode .lantern-wish-selector {
   order: 3;
 }
 
-/* Cake Top Tier & Slice Cut Line */
-.cake-top-tier {
-  width: 155px; height: 62px;
-  background: linear-gradient(180deg, #ff8da1 0%, #e0486b 100%);
-  border-radius: 16px 16px 8px 8px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 6px 12px rgba(255,255,255,0.4), 0 8px 16px rgba(0,0,0,0.3);
-  overflow: hidden;
-}
-.cake-text {
-  font-family: var(--font-royal);
-  font-size: 20px;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 0.12em;
-}
-.frosting-drops {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 12px;
-  background: #fff;
-  border-radius: 16px 16px 0 0;
-}
-
-/* ===== SPLIT CAKE CONTAINER (REALISTIC 3D SLICE SEPARATION) ===== */
-.cake-split-container {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 0;
-  position: relative;
-  width: 240px;
-  min-height: 140px;
-  transition: gap 0.85s cubic-bezier(0.34, 1.4, 0.64, 1);
-}
-.cake-wrapper.sliced .cake-split-container {
-  gap: 46px;
-}
-
-/* Cake Name Tag — floats above split container, never moves */
-.cake-name-tag {
-  font-family: var(--font-royal);
-  font-size: 12px;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 0.16em;
-  text-shadow: 0 0 14px rgba(255, 200, 80, 0.9), 0 2px 6px rgba(0,0,0,0.5);
-  background: linear-gradient(135deg, rgba(80,20,120,0.75) 0%, rgba(180,30,80,0.75) 100%);
-  border: 1.5px solid rgba(255,220,100,0.55);
-  border-radius: 18px;
-  padding: 3px 12px;
-  backdrop-filter: blur(6px);
-  animation: namePulse 2.4s ease-in-out infinite alternate;
-  pointer-events: none;
-  position: absolute;
-  /* sits centered on the top tier of the cake */
-  bottom: 130px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 20;
-  white-space: nowrap;
-  box-shadow: 0 0 12px rgba(255, 180, 50, 0.4);
-}
-@keyframes namePulse {
-  from { text-shadow: 0 0 10px rgba(255,200,80,0.7), 0 2px 6px rgba(0,0,0,0.5); box-shadow: 0 0 10px rgba(255,180,50,0.3); }
-  to   { text-shadow: 0 0 22px rgba(255,140,200,1), 0 0 8px rgba(255,220,80,0.9); box-shadow: 0 0 20px rgba(255,120,200,0.5); }
-}
-
-/* Individual cake halves */
-.cake-half {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: transform 0.85s cubic-bezier(0.34, 1.4, 0.64, 1);
-  position: relative;
-}
-.cake-wrapper.sliced .left-half {
-  transform: translateX(-24px) rotate(-8deg);
-  filter: drop-shadow(-8px 10px 20px rgba(0, 0, 0, 0.6));
-}
-.cake-wrapper.sliced .right-half {
-  transform: translateX(24px) rotate(8deg);
-  filter: drop-shadow(8px 10px 20px rgba(0, 0, 0, 0.6));
-}
-
-.half-top-tier {
-  width: 90px;
-  height: 58px;
-  background: linear-gradient(180deg, #ff8da1 0%, #e0486b 100%);
-  border-radius: 14px 14px 6px 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  box-shadow: inset 0 5px 10px rgba(255,255,255,0.4), 0 6px 14px rgba(0,0,0,0.35);
-  overflow: hidden;
-}
-.half-top-tier::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 10px;
-  background: #fff;
-  border-radius: 14px 14px 0 0;
-  opacity: 0.9;
-}
-.frosting-layer {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 40%, transparent 60%, rgba(255,255,255,0.15) 100%);
-}
-.half-cake-text {
-  font-family: var(--font-royal);
-  font-size: 15px;
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 0.1em;
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-}
-.half-bottom-tier {
-  width: 110px;
-  height: 72px;
-  background: linear-gradient(180deg, #5c2c77 0%, #3e1b53 100%);
-  border-radius: 10px 10px 6px 6px;
-  margin-top: -4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 6px 14px rgba(255,255,255,0.15), 0 10px 22px rgba(0,0,0,0.5);
-}
-.half-cherries { font-size: 14px; }
-
-/* Exposed Chocolate/Strawberry Slice Core — shown between halves */
+/* Slice Core — inside base tier after cut */
 .cake-slice-core {
   width: 0;
-  min-height: 130px;
+  height: 80px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   transition: width 0.85s cubic-bezier(0.34, 1.4, 0.64, 1) 0.05s;
-  position: relative;
-  align-self: center;
+  position: absolute;
+  left: 50%; top: 0;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 .cake-wrapper.sliced .cake-slice-core {
-  width: 36px;
+  width: 34px;
 }
 .slice-inner-filling {
   position: absolute;
@@ -2757,15 +2809,13 @@ body.pure-sky-mode .lantern-wish-selector {
     #3f1b53 36px, #3f1b53 54px
   );
   border-radius: 4px;
-  box-shadow: inset 0 0 12px rgba(0,0,0,0.7), 0 0 15px rgba(255, 62, 120, 0.3);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.7), 0 0 12px rgba(255, 62, 120, 0.3);
 }
 .slice-glitter-sparks {
-  position: relative;
-  z-index: 2;
+  position: relative; z-index: 2;
   font-size: 14px;
   animation: coreSparkle 0.9s infinite alternate;
-  opacity: 0;
-  transition: opacity 0.5s ease 0.3s;
+  opacity: 0; transition: opacity 0.5s ease 0.3s;
 }
 .cake-wrapper.sliced .slice-glitter-sparks { opacity: 1; }
 @keyframes coreSparkle {
@@ -2773,25 +2823,13 @@ body.pure-sky-mode .lantern-wish-selector {
   100% { transform: scale(1.4) rotate(20deg); filter: drop-shadow(0 0 12px #ffd269); }
 }
 
-/* Legacy cut line (hidden now) */
-.cake-cut-line { display: none; }
-
-.cake-bottom-tier {
-  width: 210px; height: 80px;
-  background: linear-gradient(180deg, #5c2c77 0%, #3e1b53 100%);
-  border-radius: 12px 12px 8px 8px;
-  margin-top: -5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: inset 0 8px 16px rgba(255,255,255,0.2), 0 12px 25px rgba(0,0,0,0.5);
-}
-.cherries-row { display: flex; gap: 14px; font-size: 18px; }
+/* Golden Cake Stand */
 .cake-stand {
-  width: 235px; height: 12px;
+  width: 222px; height: 14px;
   background: linear-gradient(90deg, #c79532, #fbe396, #b07d1b);
   border-radius: 999px;
-  margin-top: -3px;
+  margin-top: 2px;
+  box-shadow: 0 4px 16px rgba(180, 120, 20, 0.5);
 }
 
 /* Cake Action Buttons Group */
@@ -3866,11 +3904,16 @@ body.pure-sky-mode .lantern-wish-selector {
   .key-card-left { flex-direction: column; text-align: center; }
   .key-info { text-align: center; }
   .btn-royal { width: 100%; justify-content: center; font-size: 14px; padding: 12px 20px; }
-  .cake-wrapper { width: 210px; }
-  .cake-stand { width: 210px; }
-  .half-top-tier { width: 76px; height: 50px; }
-  .half-bottom-tier { width: 95px; height: 60px; }
-  .cake-split-container { width: 210px; }
+  .cake-wrapper { transform-origin: center bottom; }
+  .cake-tier-top { width: 88px; }
+  .cake-tier-top .cake-tier-body { height: 46px; }
+  .cake-tier-mid { width: 132px; }
+  .cake-tier-mid .cake-tier-body { height: 58px; }
+  .cake-tier-base { width: 172px; }
+  .cake-tier-base .base-body { height: 66px; }
+  .cake-stand { width: 180px; }
+  .cake-name-band { font-size: 10px; padding: 2px 10px; letter-spacing: 0.08em; }
+  .cake-deco-stars { font-size: 10px; letter-spacing: 2px; }
   .bottom-footer { justify-content: center; }
 }
 
@@ -3995,4 +4038,31 @@ iframe[src*="netlify"] {
   .numpad-key.submit-key {
     font-size: 12px;
   }
+
+  /* Lantern Stage Mobile Fixes */
+  .lantern-stage-container {
+    min-height: 440px;
+    padding: 18px 12px 18px;
+  }
+  .sky-lantern-wrapper {
+    width: 170px;
+  }
+  .lantern-paper-body {
+    width: 170px;
+    height: 215px;
+  }
+  .sky-moon {
+    width: 44px;
+    height: 44px;
+    top: 18px;
+    right: 20px;
+  }
+  .cake-tier-top { width: 76px; }
+  .cake-tier-top .cake-tier-body { height: 42px; }
+  .cake-tier-mid { width: 116px; }
+  .cake-tier-mid .cake-tier-body { height: 52px; }
+  .cake-tier-base { width: 152px; }
+  .cake-tier-base .base-body { height: 60px; }
+  .cake-stand { width: 160px; }
+  .cake-name-band { font-size: 9px; padding: 2px 8px; }
 }
