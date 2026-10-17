@@ -1686,11 +1686,46 @@ function startCakeTypewriter() {
   setTimeout(typeNext, 300);
 }
 
+// Helper: check if all 4 candles are blown, then trigger knife & cut prompt
+function checkAllCandlesBlown() {
+  const candles = document.querySelectorAll('.candle');
+  const allBlown = Array.from(candles).every(c => c.classList.contains('blown'));
+  if (allBlown && !candlesBlown) {
+    candlesBlown = true;
+    const candleGlow = document.getElementById('candleGlow');
+    if (candleGlow) candleGlow.style.opacity = '0';
+
+    setTimeout(() => {
+      audio.playChime();
+      if (blowCandlesBtn) blowCandlesBtn.style.display = 'none';
+      if (cutCakeBtn) {
+        cutCakeBtn.style.display = 'inline-flex';
+        cutCakeBtn.disabled = false;
+      }
+      if (wishTip) wishTip.textContent = "All candles blown! 🕯️ Now slice the cake with the knife!";
+      if (cakeKnife) {
+        cakeKnife.classList.add('visible');
+        cakeKnife.style.pointerEvents = 'auto';
+      }
+
+      // Automatically erase/fade out STEP 04 header text
+      if (cakeInstructionBox) {
+        cakeInstructionBox.classList.add('fade-erase');
+        setTimeout(() => {
+          cakeInstructionBox.style.display = 'none';
+        }, 500);
+      }
+    }, 300);
+  }
+}
+
 // 1. Systematic Candle Blow (One by One)
 function blowOutCandlesSystematic() {
   if (candlesBlown) return;
-  candlesBlown = true;
   if (blowCandlesBtn) blowCandlesBtn.disabled = true;
+
+  const candleGlow = document.getElementById('candleGlow');
+  if (candleGlow) candleGlow.style.opacity = '0';
 
   const flames = [
     document.getElementById('flame1'),
@@ -1710,29 +1745,9 @@ function blowOutCandlesSystematic() {
 
       // When last candle is blown
       if (idx === flames.length - 1) {
-        setTimeout(() => {
-          audio.playChime();
-          if (blowCandlesBtn) blowCandlesBtn.style.display = 'none';
-          if (cutCakeBtn) {
-            cutCakeBtn.style.display = 'inline-flex';
-            cutCakeBtn.disabled = false;
-          }
-          if (wishTip) wishTip.textContent = "All candles blown! 🕯️ Now slice the cake with the knife!";
-          if (cakeKnife) {
-            cakeKnife.classList.add('visible');
-            cakeKnife.style.pointerEvents = 'auto';
-          }
-
-          // Automatically erase/fade out STEP 04 header text as soon as all candles are off!
-          if (cakeInstructionBox) {
-            cakeInstructionBox.classList.add('fade-erase');
-            setTimeout(() => {
-              cakeInstructionBox.style.display = 'none';
-            }, 500);
-          }
-        }, 300);
+        checkAllCandlesBlown();
       }
-    }, idx * 300);
+    }, idx * 280);
   });
 }
 
@@ -1747,6 +1762,9 @@ function cutTheCake() {
       const f = document.getElementById(id);
       if (f) f.classList.add('extinguished');
     });
+    document.querySelectorAll('.candle').forEach(c => c.classList.add('blown'));
+    const candleGlow = document.getElementById('candleGlow');
+    if (candleGlow) candleGlow.style.opacity = '0';
     if (blowCandlesBtn) blowCandlesBtn.style.display = 'none';
     if (cakeInstructionBox) {
       cakeInstructionBox.classList.add('fade-erase');
@@ -1840,6 +1858,20 @@ function cutTheCake() {
 
 if (blowCandlesBtn) blowCandlesBtn.addEventListener('click', blowOutCandlesSystematic);
 if (cutCakeBtn) cutCakeBtn.addEventListener('click', cutTheCake);
+
+// Clicking individual candles blows that candle out with sound & smoke
+document.querySelectorAll('.candle').forEach(candle => {
+  candle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!candle.classList.contains('blown')) {
+      const flame = candle.querySelector('.flame');
+      if (flame) flame.classList.add('extinguished');
+      candle.classList.add('blown');
+      audio.playCandleBlow();
+      checkAllCandlesBlown();
+    }
+  });
+});
 
 // Clicking cake knife directly triggers cake cut
 if (cakeKnife) {
@@ -2480,6 +2512,8 @@ function resetEntireExperience() {
     if (f) f.classList.remove('extinguished');
   });
   document.querySelectorAll('.candle').forEach(c => c.classList.remove('blown'));
+  const candleGlow = document.getElementById('candleGlow');
+  if (candleGlow) candleGlow.style.opacity = '';
 
   // Reset Knife
   if (cakeKnife) cakeKnife.classList.remove('visible', 'cutting');

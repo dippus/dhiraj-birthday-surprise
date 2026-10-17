@@ -430,81 +430,154 @@
           <div class="intro-divider"></div>
         </div>
 
-        <!-- Interactive 3D Cake with Centered Knife & Real Split Slices Effect -->
+        <!-- Interactive 3D Cute Artisan Cake with Centered Knife & Real Cut-Out Slice -->
         <div class="cake-stage">
           <!-- The Golden Chef Cake Knife (Centered directly above cake) -->
           <div class="cake-knife" id="cakeKnife" title="Click knife to cut cake!">
-            <div class="knife-handle"></div>
+            <div class="knife-handle"><span class="knife-grip-ring"></span></div>
             <div class="knife-guard"></div>
-            <div class="knife-blade"></div>
+            <div class="knife-blade"><div class="knife-gleam"></div></div>
           </div>
 
           <div class="cake-wrapper" id="cakeWrapper" title="Cake par tap karke candle bujhao ya cut karo!">
+            <!-- Warm Candlelight Glow Reflecting on Cake -->
+            <div class="candle-ambient-glow" id="candleGlow"></div>
 
-            <!-- ===== 4 COLORFUL CANDLES ROW ===== -->
+            <!-- ===== 4 PASTEL STRIPED CANDLES ROW ===== -->
             <div class="candles-row" id="candlesRow">
-              <div class="candle c-gold" id="candle1">
-                <div class="flame flame-gold" id="flame1"></div>
+              <div class="candle c-gold" id="candle1" title="Click candle to blow out!">
+                <div class="smoke-wisp"></div>
+                <div class="flame flame-gold" id="flame1">
+                  <div class="flame-inner"></div>
+                </div>
                 <div class="wick"></div>
                 <div class="candle-body"></div>
               </div>
-              <div class="candle c-pink" id="candle2">
-                <div class="flame flame-pink" id="flame2"></div>
+              <div class="candle c-pink" id="candle2" title="Click candle to blow out!">
+                <div class="smoke-wisp"></div>
+                <div class="flame flame-pink" id="flame2">
+                  <div class="flame-inner"></div>
+                </div>
                 <div class="wick"></div>
                 <div class="candle-body"></div>
               </div>
-              <div class="candle c-cyan" id="candle3">
-                <div class="flame flame-cyan" id="flame3"></div>
+              <div class="candle c-cyan" id="candle3" title="Click candle to blow out!">
+                <div class="smoke-wisp"></div>
+                <div class="flame flame-cyan" id="flame3">
+                  <div class="flame-inner"></div>
+                </div>
                 <div class="wick"></div>
                 <div class="candle-body"></div>
               </div>
-              <div class="candle c-purple" id="candle4">
-                <div class="flame flame-purple" id="flame4"></div>
+              <div class="candle c-purple" id="candle4" title="Click candle to blow out!">
+                <div class="smoke-wisp"></div>
+                <div class="flame flame-purple" id="flame4">
+                  <div class="flame-inner"></div>
+                </div>
                 <div class="wick"></div>
                 <div class="candle-body"></div>
               </div>
             </div>
 
-            <!-- ===== REALISTIC 3-TIER BIRTHDAY CAKE ===== -->
-            <!-- TOP TIER -->
-            <div class="cake-tier cake-tier-top">
-              <div class="cake-frosting-top"></div>
-              <div class="cake-drips"><span></span><span></span><span></span><span></span><span></span></div>
-              <div class="cake-tier-body">
-                <div class="cake-tier-shine"></div>
-                <div class="cake-deco-stars">⭐ ✦ ⭐</div>
-              </div>
-            </div>
-
-            <!-- MIDDLE TIER -->
-            <div class="cake-tier cake-tier-mid">
-              <div class="cake-frosting-top"></div>
-              <div class="cake-drips pink-drips"><span></span><span></span><span></span><span></span><span></span><span></span></div>
-              <div class="cake-tier-body">
-                <div class="cake-tier-shine"></div>
-                <div class="cake-name-band" id="cakeNameTag">✨ DHIRAJ ✨</div>
-              </div>
-            </div>
-
-            <!-- BOTTOM TIER -->
-            <div class="cake-tier cake-tier-base" id="cakeSplitContainer">
-              <div class="cake-frosting-top choc"></div>
-              <div class="cake-drips choc-drips"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
-              <div class="cake-tier-body base-body">
-                <div class="cake-tier-shine"></div>
-                <!-- Left half slice (sliced state) -->
-                <div class="cake-half left-half">
-                  <div class="cake-slice-core" id="cakeSliceCore">
-                    <div class="slice-inner-filling"></div>
-                    <div class="slice-glitter-sparks">✨</div>
+            <!-- ===== 3D ROUNDED CUTE BIRTHDAY CAKE TIERS ===== -->
+            <div class="cake-body-stack">
+              <!-- TOP TIER (Cute Strawberry & Cream) -->
+              <div class="cake-tier cake-tier-top">
+                <div class="tier-frosting-top">
+                  <div class="piped-creams">
+                    <span class="cream-drop"></span><span class="cream-drop"></span>
+                    <span class="cream-drop"></span><span class="cream-drop"></span>
+                    <span class="cream-drop"></span><span class="cream-drop"></span>
+                  </div>
+                  <div class="cherries-crown">
+                    <span class="cherry c1">🍒</span>
+                    <span class="cherry c2">🍓</span>
+                    <span class="cherry c3">🍒</span>
+                  </div>
+                  <div class="sprinkles-scatter">
+                    <i class="sp sp-gold"></i><i class="sp sp-pink"></i><i class="sp sp-cyan"></i><i class="sp sp-purple"></i>
                   </div>
                 </div>
-                <div class="cake-cherries-row">🍓 🍒 🍓 🍒 🍓</div>
+                <div class="cake-drips strawberry-drips">
+                  <span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="tier-cylinder tier-top-cylinder">
+                  <div class="cylinder-shine"></div>
+                  <div class="cylinder-decor">⭐ · ✦ · ⭐</div>
+                </div>
+              </div>
+
+              <!-- MIDDLE TIER (Lavender Vanilla with Royal Nameband) -->
+              <div class="cake-tier cake-tier-mid">
+                <div class="tier-frosting-top">
+                  <div class="piped-pearls">
+                    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                  </div>
+                </div>
+                <div class="cake-drips vanilla-drips">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="tier-cylinder tier-mid-cylinder">
+                  <div class="cylinder-shine"></div>
+                  <div class="cake-name-band" id="cakeNameTag">✨ DHIRAJ ✨</div>
+                </div>
+              </div>
+
+              <!-- BASE TIER (Rich Chocolate Ganache with Cut Cavity) -->
+              <div class="cake-tier cake-tier-base" id="cakeBaseTier">
+                <div class="tier-frosting-top choc-top">
+                  <div class="piped-creams choc-creams">
+                    <span class="cream-drop choc"></span><span class="cream-drop choc"></span>
+                    <span class="cream-drop choc"></span><span class="cream-drop choc"></span>
+                    <span class="cream-drop choc"></span><span class="cream-drop choc"></span>
+                    <span class="cream-drop choc"></span><span class="cream-drop choc"></span>
+                  </div>
+                </div>
+                <div class="cake-drips choc-drips">
+                  <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+                </div>
+                <div class="tier-cylinder tier-base-cylinder">
+                  <div class="cylinder-shine"></div>
+                  <!-- Cut cavity opening when slice pulls out -->
+                  <div class="cake-cut-cavity">
+                    <div class="cavity-filling">
+                      <span class="layer-cake-biscuit"></span>
+                      <span class="layer-cake-jam"></span>
+                      <span class="layer-cake-biscuit"></span>
+                      <span class="layer-cake-cream"></span>
+                    </div>
+                  </div>
+                  <div class="base-cherries-row">🍓 🍒 🍓 🍒 🍓</div>
+                </div>
               </div>
             </div>
 
-            <!-- Golden Cake Stand -->
-            <div class="cake-stand"></div>
+            <!-- ===== ANIMATED PULL-OUT CAKE SLICE ON MINI SAUCER ===== -->
+            <div class="cake-slice-presentation" id="cakeSlicePresentation">
+              <div class="slice-saucer"></div>
+              <div class="slice-wedge">
+                <div class="slice-top-frosting">
+                  <span class="slice-cherry">🍒</span>
+                  <div class="slice-sprinkle"></div>
+                </div>
+                <div class="slice-layers">
+                  <div class="slice-layer sponge1"></div>
+                  <div class="slice-layer cream1"></div>
+                  <div class="slice-layer sponge2"></div>
+                  <div class="slice-layer jam"></div>
+                  <div class="slice-layer sponge3"></div>
+                </div>
+                <div class="slice-crust"></div>
+              </div>
+              <div class="slice-sparkle-stars">✨ 🍰 ✨</div>
+            </div>
+
+            <!-- Golden Luxury Porcelain Cake Pedestal Stand -->
+            <div class="cake-pedestal">
+              <div class="pedestal-plate"></div>
+              <div class="pedestal-pillar"></div>
+              <div class="pedestal-base"></div>
+            </div>
           </div>
         </div>
 
