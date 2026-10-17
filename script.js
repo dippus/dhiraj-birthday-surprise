@@ -2079,7 +2079,7 @@ function renderFullLetterImmediately() {
     <p class="letter-para">You deserve beautiful things, genuine happiness, and a future you're proud of.</p>
 
     <div class="letter-hbd-callout">
-      <div class="letter-hbd-heading">🎂 Happy Birthday, mere bhai! 🎂</div>
+      <div class="letter-hbd-heading">🎂 Happy Birthday, mere bhai 🎂</div>
       <p class="letter-cherish-text">“Some bonds don't need big promises. They just deserve to be cherished. And I'm glad our friendship is one of them.” 🌌</p>
     </div>
 
@@ -2230,7 +2230,7 @@ async function startTypewriterLetter() {
   callout.appendChild(cursor);
   container.appendChild(callout);
 
-  await typeTextAsync(hbdHead, "🎂 Happy Birthday, mere bhai! 🎂", 16, cursor);
+  await typeTextAsync(hbdHead, "🎂 Happy Birthday, mere bhai 🎂", 16, cursor);
   await typeWait(300);
   if (typewriterState.cancelled) return;
 
